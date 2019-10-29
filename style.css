@@ -20,12 +20,17 @@ body{
     padding: 3rem 2rem;
     box-shadow: 0 0 10px black;
     border-radius: 0.5rem;
-    height:70vh;   
+    height:70vh;  
+    overflow-y: auto; 
 }
 
 .page h1{
     margin: 0 0 1rem 0;
-    overflow-y: auto;
+    
+}
+
+.page p{
+    line-height: 1.5rem;;
 }
 
 .form_style{
