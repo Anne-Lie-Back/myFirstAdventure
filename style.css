@@ -25,16 +25,19 @@ body{
 
 .page h1{
     margin: 0 0 1rem 0;
+    overflow-y: auto;
 }
 
-form{
+.form_style{
     display:flex;
     justify-content:center;
 }
 
-#getInput{
-    
-    width: 20rem;
+.form_style input{
     padding: 0.5rem 1rem;
+    width:15rem;
+}
 
+.form_style button{
+    padding: 0.5rem 1rem;
 }

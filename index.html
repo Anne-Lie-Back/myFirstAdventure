@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Sagan om...</title>
 
     <link rel="stylesheet" href="style.css">
-    <script src="script1.js"></script>
+    <script defer src="script1.js"></script>
 </head>
+
 <body>
     <div class="page">
-            <h1>Sagan om mormors lunch</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, earum sunt cum voluptatibus id impedit quo maxime voluptate tempora mollitia cupiditate deleniti exercitationem a architecto? Autem id nostrum inventore quaerat.</p>
+        <h1>Sagan om mormors lunch</h1>
+        <p id="userText">
+            En solig dag i augusti vaknar du av att din mamma ropar på dig. Vad heter du?
+        </p>
     </div>
-    
-    <form>
-        <input type="text" id="getInput" placeholder="Skriv här...">
-    </form>
+
+    <div class="form_style">
+        <input type="text" id="userInput" placeholder="Skriv här...">
+        <button id="userButton" onclick="getUserInput()"> Enter </button>
+    </div>
 </body>
+
 </html>
