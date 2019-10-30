@@ -46,3 +46,10 @@ body{
 .form_style button{
     padding: 0.5rem 1rem;
 }
+
+.dead{
+    color:red;
+    font-weight: bolder;
+    font-size: 2rem;
+    text-align:center;
+}

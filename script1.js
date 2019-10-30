@@ -24,10 +24,11 @@ let breadCrumbles = 5
 
 /* --- GAME PLAY --- */
 
+
 function initialInput(){
     userName = input.value + "luvan"
     text.innerHTML += '<br>"' + userName + '! Har du glömt att du ska till mormor med lunch idag?! " <br> Du reser dig upp ur sängen och tänker :"Gaffel också" och slänger på dig dina kläder och springer ner. <br> <br> Väl där nere frågar din mor: "Vad tror du mormor vill ha att äta idag?"'
-
+    
     button.onclick = event1
     
 }
@@ -102,8 +103,8 @@ function event3(){
     
     if (input.value === 'j'){
             text.innerHTML += 'Den ser stor och svampig ut. Vill du äta den på stubben? (J/N)'
-            button.onclick = eatMushroom
             console.log('test svamp')
+            button.onclick = eatMushroom
     }
         
     else if (input.value === 'n'){
@@ -119,11 +120,10 @@ function event3(){
         
     }
 
-    button.onclick = console.log('det funkar')
 }
 
 function eatMushroom(){
-    console.log('test nest switch')
+    
     if (input.value === 'j'){
             youDied()
     }
@@ -139,9 +139,28 @@ function eatMushroom(){
 }
 
 function youDied(){
-    text.innerHTML += '<br> YOU DIEDED!'
+    text.innerHTML += '<p class="dead"><br> YOU DIEDED!</p> <p> Vill du spela igen? (J/N)</p>'
+    button.onclick = startOver
+
+    function startOver(){
+    switch (input.value) {
+        case 'j':
+            text.innerHTML = 'En solig dag i augusti vaknar du av att din mamma ropar på dig. (Skriv ditt namn)'
+            button.onclick = initialInput
+            break
+
+        case 'n':
+            text.innerHTML = '<p> Så spelet var för svårt för dig? Det är okej. Du är välkommen tillbaka när du blivit lite smartare. </p>'
+            break
+        default:
+            text.innerHTML = wrongInput
+    }
+    }
 }
 
+function event4(){
+    console.log('sist')
+}
 /**
  * @param {string} wolfDialog - story-text, the initial wolf-dialog after user is "done" with pickUpBreadCrumble and doPushUp
  */
