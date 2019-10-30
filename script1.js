@@ -8,6 +8,7 @@
  * @param {number} healthPoints - The users HP
  * @param {number} strength - Your strength point
  * @param {number} breadCrumbs - Number of excisting breadcrumbs through the game
+ * @param {boolean} wolf - Stores if you told the wolf the truth or not
  * 
  */
 let text = document.getElementById("userText")
@@ -19,7 +20,8 @@ let basket = []
 let userName
 let healthPoints = 20
 let userStrength = 1
-let breadCrumbles = 5
+let breadCrumbles =  5
+let wolf = true
 
 
 /* --- GAME PLAY --- */
@@ -60,44 +62,9 @@ function event2(){
  */
 const story = 'Skogen bjuder på många spännande dofter, men inget doftar så gott som din mormors kanelbullar. Du börjar fantisera om alla de kanelbullar du hoppas få äta när du kommer fram till mormors stuga. Bredvid ett träd precis vid stigen ser du en svamp. Mormor gillar svamp. Plocka upp den? (J/N)'
 
-function pickBreadCrumble(){
-    
-    if (input.value === 'j'){
-        breadCrumbles = breadCrumbles - 1
-        text.innerHTML += '<br> Du böjer dig ner och lockar upp brödsmulan i din hand. Du undersöker den noggrant, dammar av de fåtal gruskorn som satt på det, och slänger sedan in smulan i munnen. Medan du ändå är där nere så funderar du på om du ska göra en armhävning. <br> Gör du en armhävning? J/N' 
-        button.onclick = doPushUp
-        
-    }
 
-    else if (input.value === 'n'){
-        text.innerHTML += '<br> Brödsmulan ser inte tillräckligt aptitlig ut. Du promenerar vidare.' + story
-        button.onclick = event3
-    }
 
-    else{
-        text.innerHTML += wrongInput
-        button.onclick = pickBreadCrumble
-    }
-}
 
-function doPushUp(){
-
-    if(input.value === 'j'){
-        userStrength = userStrength + 1
-        text.innerHTML += '<br> Du gör en armhävning och känner dig som en riktig spännis.' + story
-        button.onclick = event3
-    }
-
-    else if (input.value === 'n'){
-        text.innerHTML += '<br> Äsh, trams. Vem i sitt sinnes fulla bruk gör en armhävning mitt ute i skogen?' + story
-        button.onclick = event3
-    }
-
-    else{
-        input.value += wrongInput
-        button.onlick = doPushUp
-    }    
-}
 
 function event3(){
     
@@ -109,9 +76,7 @@ function event3(){
         
     else if (input.value === 'n'){
             text.innerHTML += 'Nej fy, även om din mormor gillar svamp så hatar du att ens vidröra dess svampiga yta. Du ryser till vid tanken och springer vidare innan tanken hinenr ikapp igen'
-            basket.push('svamp')
-            console.log(basket)
-            button.onclick = event4
+            event4()
     }
 
     else{
@@ -130,11 +95,95 @@ function eatMushroom(){
         
     else if(input.value === 'n'){
             text.innerHTML += 'Du lägger ner svampen i korgen bland ' + basket[0] + ' och ' + basket[1] + ' och beger dig vidare in i skogen.'
-            button.onclick = event4
+            basket.push('svamp')
+            
+            event4()
     }
 
     else{
             text.innerHTML += wrongInput
+    }
+}
+
+function event4(){
+    text.innerHTML += '<br><br> Skogen bjuder på många spännande ljud. Fåglar som kvittrar, vinden som viner genom trädtopparna, en buske som prasslar medan en varg stiger ut ur den... ... ... <br> EN BUSKE SOM PRASSLAR MEDAN EN VARG STIGER UR DEN?!' +
+    '<br> Vargen synar dig från top till tå, sedan öppnar han sitt tandprydda gap och börjar tala med sin hesa whiskeyröst <br> "Nämen hej kompis. Vad heter du?"' + 
+    '<br> Din mamma har alltid sagt till dig att du inte ska prata med främmande människor, men hon sa inget om djur. <br> "Jag heter ' + userName + 
+    '" <br> "MMMMjjjahajahaja...du ' + userName + ', vad är det du har i korgen?" <br> Du tittar ner i din korg och räknar upp innehållet: "' +
+    basket + '" <br> "MMmmmåhååå, kan man få smaka något? <br> "Nej, maten jag har i min korg ska jag ge till mormor" <br> Vargen tittar på dig med surmulen blick.' +
+    'Du börjar bli osäker, var det främmande människor eller främlingar överhuvudtaget man inte skulle prata med? Ska du berätta vad mormor bor (S) eller ska du ljuga för vargen? (F)'
+     
+    button.onclick  = tellTruth
+
+    function tellTruth(){
+        switch(input.value){
+            case 's' || 'S':
+                text.innerHTML += 'Du bestämmer dig för att allt fluffigt går att lita på och berättar sanningen: <br> "Hon bor i andra sidan skogen, om du tar höger vid stigen"'
+
+                button.onclick = event5
+                break
+
+            case 'f' || 'F':
+                text.innerHTML += 'Du bestämmer dig för att även om vargen är söt och fluffig så är han en främling. För att dämpa skadan som redan är skedd så bestämmer du dig för att dra en vit lögn. Skriv en lögn att lura vargen med'
+                wolf = false
+                
+                button.onclick = tellLie
+                break
+            
+            default:
+                text.innerHTML += wrongInput
+                button.onclick = tellTruth
+        }      
+    }
+
+    function tellLie(){
+        
+        text.innerHTML += '<br> "'+ input.value + '" <br> "Oj, då har du en bit att gå. Bäst att låta dig traska vidare. Farväl ' + userName + '!"'
+        console.log(wolf)
+        button.onclick = event5
+    }
+}
+
+function event5(){
+    console.log(wolf)
+}
+
+function pickBreadCrumble(){
+    
+    if (input.value === 'j'){
+        breadCrumbles = breadCrumbles - 1
+        text.innerHTML += '<br> Du böjer dig ner och lockar upp brödsmulan i din hand. Du undersöker den noggrant, dammar av de fåtal gruskorn som satt på det, och slänger sedan in smulan i munnen. Medan du ändå är där nere så funderar du på om du ska göra en armhävning. <br> Gör du en armhävning? J/N' 
+        button.onclick = doPushUp
+
+        function doPushUp(){
+
+            if(input.value === 'j'){
+                userStrength = userStrength + 1
+                text.innerHTML += '<br> Du gör en armhävning och känner dig som en riktig spännis.' + story
+                button.onclick = event3
+            }
+        
+            else if (input.value === 'n'){
+                text.innerHTML += '<br> Äsh, trams. Vem i sitt sinnes fulla bruk gör en armhävning mitt ute i skogen?' + story
+                button.onclick = event3
+            }
+        
+            else{
+                input.value += wrongInput
+                button.onlick = doPushUp
+            }    
+        }
+        
+    }
+
+    else if (input.value === 'n'){
+        text.innerHTML += '<br> Brödsmulan ser inte tillräckligt aptitlig ut. Du promenerar vidare.' + story
+        button.onclick = event3
+    }
+
+    else{
+        text.innerHTML += wrongInput
+        button.onclick = pickBreadCrumble
     }
 }
 
@@ -157,19 +206,6 @@ function youDied(){
     }
     }
 }
-
-function event4(){
-    console.log('sist')
-}
-/**
- * @param {string} wolfDialog - story-text, the initial wolf-dialog after user is "done" with pickUpBreadCrumble and doPushUp
- */
-const wolfDialog = '<br><br> Skogen bjuder på många spännande ljud. Fåglar som kvittrar, vinden som viner genom trädtopparna, en buske som prasslar medan en varg stiger ut ur den... ... ... <br> EN BUSKE SOM PRASSLAR MEDAN EN VARG STIGER UR DEN?!' +
-'<br> Vargen synar dig från top till tå, sedan öppnar han sitt tandprydda gap och börjar tala med sin hesa whiskeyröst <br> "Nämen hej kompis. Vad heter du?"' + 
-'<br> Din mamma har alltid sagt till dig att du inte ska prata med främmande människor, men hon sa inget om djur. <br> "Jag heter ' + userName + '"'
-
-
-
 
 
 
