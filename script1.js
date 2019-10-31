@@ -64,8 +64,6 @@ function event2(){
                         + basket[1] + '. Målet är: mormors stuga!' + 
                          '<br> <br> Du traskar ut i den gröna, frodiga skogen. Fåglar kvittrar och solens strålar som silar genom trädkronorna och skapar skuggspel över stigen.'
 
-    breadCrumbsLeft = 4
-
     seeBreadCrumb()
 }
 
@@ -156,87 +154,71 @@ function event4(){
         
         text.innerHTML += '<br> "'+ input.value + '" <br> "Oj, då har du en bit att gå. Bäst att låta dig traska vidare. Farväl ' + userName + '!"'
         
-        breadCrumbsLeft = 3
         seeBreadCrumb()
-
-
     }
 }
 
 function event5(){
-    text.innerHTML += 'hello'
+    text.innerHTML += '<p><br> EN VILD PIKACHU UPPENBARAR SIG! <br> Vad vill du göra: fånga, mata eller fly?</p>'
+
+    button.onclick = pikachuEvent
 }
+
+function pikachuEvent(){
+
+    switch(input.value){
+
+        case 'fånga':
+            console.log('fånga')
+            capturePikachu()
+            break
+        
+        case 'mata':
+                console.log('mata')
+
+            //feedPikachu()
+            break
+
+        case 'fly':
+                console.log('fly')
+
+           // runAwayPikachu()
+    }
+
+    function capturePikachu(){
+        text.innerHTML += 'Du kastar pokebollen du tydligen haft i fickan hela tiden'
+
+        let randomNumber = Math.round(( Math.random() * 10 ) +1)
+
+        if (randomNumber >= 7){
+            
+            console.log(basket + randomNumber)
+            text.innerHTML += ' <p> Grattis! Du har just fångat din första Pokémon </p>'
+            basket.push('pokemon')
+        }
+
+        else{
+            healthPoints = healthPoints - 1
+            text.innerHTML += '<p> Oh no! Pikachu lyckades rulla undan. Dessutom hoppar den fram och biter dig i fingret. <br> "AJ" (Du har nu ' + healthPoints + ' HP) <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>'
+            
+            console.log(randomNumber)
+            button.onclick = pikachuEvent
+        }
+
+    }
+
+    
+
+    
+}
+
 
 /**
  * ---- BREADCRUMB LOOP ---
  * functions played everytime the user sees a breadcrumb
  */
 
-function seeBreadCrumb(){
 
-    text.innerHTML += '<br> Din färd mot mormors stuga fortsätter. På stigen ser du en brödsmula. Plocka upp brödsmulan? (J/N)'
-
-    button.onclick = pickBreadCrumb
-
-    function pickBreadCrumb(){
-    
-        if (input.value === 'j'){
-            breadCrumbles = breadCrumbles - 1
-            text.innerHTML += '<br> Du böjer dig ner och lockar upp brödsmulan i din hand. Du undersöker den noggrant, dammar av de fåtal gruskorn som satt på det, och slänger sedan in smulan i munnen. Medan du ändå är där nere så funderar du på om du ska göra en armhävning. <br> Gör du en armhävning? J/N' 
-            button.onclick = doPushUp
-
-            function doPushUp(){
-                console.log('Gör en armhävning')
-                switch(input.value){
-                case 'j':
-                    userStrength = userStrength + 1
-                    text.innerHTML += '<br> Du gör en armhävning och känner dig som en riktig spännis.'
-                    eventDirection()
-                    break
-                
-            
-                case 'n':
-                    text.innerHTML += '<br> Äsh, trams. Vem i sitt sinnes fulla bruk gör en armhävning mitt ute i skogen?'
-                    eventDirection()
-                    break
-                
-            
-                default:
-                    input.value += wrongInput
-                    button.onlick = doPushUp
-                }
-            }
-        }
-
-        else if (input.value === 'n'){
-            text.innerHTML += '<br> Brödsmulan ser inte tillräckligt aptitlig ut. Du promenerar vidare.'
-            eventDirection()
-            
-        }
-
-        else{
-            text.innerHTML += wrongInput
-            button.onclick = pickBreadCrumble
-        }
-    }
-
-    function eventDirection(){
-        switch (breadCrumbsLeft){
-
-            case 4:
-                button.onclick = event3
-                break
-
-            case 3:
-                button.onclick = event5
-                break
-
-            default:
-                console.log('Nu blev det fel')
-
-        }
-    }
-}
 
 /**
  * ----- DEAD ----
