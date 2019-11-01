@@ -209,21 +209,53 @@ function event6(){
             text.innerHTML += '<p> Du plockar upp den och lägger den i din korg. I din korg ser du nu massa bra grejer som: ' + basket + '. </p>'
 
             console.log(basket)
-            event7()
+            
+            break
 
         case 'n':
         case 'N':
 
         text.innerHTML += '<p> Du gillar inte pinnar, dessutom kan de vara farliga. Man kan ju faktiskt snubbla på den. </p>'
 
-        event7()
+        
+        break
 
         default:
             text.innerHTML += wrongInput
     }
+
+    event7()
 }
 
 function event7(){
-    text.innerHTML = '<p> Du kommer fram till ett vägskäl </p>'
+    text.innerHTML += '<p> Du kommer fram till ett vägskäl. Stigen delar sig som ett Y framför dig. Till höger ser du en mörk,' + 
+    ' lummig väg som du vet leder till mormor. På stigen till vänster skiner solen och du ser du ett spår av brödsmulor som leder djupare in. ' + 
+    '<br> Väljer du att gå höger (H) eller vänster (V)?</p>'
 
+    button.onclick = choosePath
+
+    function choosePath(){
+
+    switch(input.value.toLowerCase()){
+        case 'v':
+            goToTheWitch()
+            break
+        
+        case 'h':
+            goToGrandma()
+            break
+        
+        default:
+            text.innerHTML += wrongInput
+    }
+
+    }
+}
+
+function goToTheWitch(){
+    text.innerHTML += 'HÄXA'
+}
+
+function goToGrandma(){
+    text.innerHTML += 'MORMOR'
 }

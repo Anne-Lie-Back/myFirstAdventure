@@ -7,7 +7,7 @@
 
 function seeBreadCrumb(nextEvent){
 
-    text.innerHTML += '<br> Din färd mot mormors stuga fortsätter. På stigen ser du en brödsmula. Plocka upp brödsmulan? (J/N)'
+    text.innerHTML += '<br> Ditt äventyr fortsätter. På stigen ser du en brödsmula. Plocka upp brödsmulan? (J/N)'
 
     
     breadCrumbsLeft = breadCrumbsLeft - 1
