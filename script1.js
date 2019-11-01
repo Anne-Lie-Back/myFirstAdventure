@@ -274,13 +274,28 @@ function pikachuEvent(){
         }
 
         
-    }
-
-    
-
-    
+    }   
 }
 
+function useBasketItem(input){
+
+    let itemWasFound = false
+    let itemIndex = -1
+    for (const index in basket){
+        const item = basket[index]
+        if (item == input) {
+            itemWasFound = true
+            itemIndex = index
+            break
+        }
+    }
+
+    if (itemWasFound){
+        basket.splice(itemIndex, 1)
+    }
+
+    return itemWasFound
+}
 
 /**
  * ---- BREADCRUMB LOOP ---
