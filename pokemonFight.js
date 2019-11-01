@@ -110,28 +110,5 @@ function feedPikachu(){
     console.log(basket)
 } 
 
-function useBasketItem(input){
 
-    let itemWasFound = false
-    let itemIndex = -1
-    for (const index in basket){
-        const item = basket[index]
-        if (item == input) {
-            itemWasFound = true
-            itemIndex = index
-            break
-        }
-    }
-
-    if (itemWasFound){
-        basket.splice(itemIndex, 1)
-    }
-
-    return itemWasFound
-}
-
-function getRandomNumber(randomNumber){
-    return randomNumber = Math.round( Math.random() * 4 )
-    
-}
 

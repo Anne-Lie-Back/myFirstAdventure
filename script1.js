@@ -227,38 +227,3 @@ function event7(){
     text.innerHTML = '<p> Du kommer fram till ett vägskäl </p>'
 
 }
-
-
-
-
-
-
-
-
-
-/**
- * ----- DEAD ----
- * Function played when user dies
- */
-
-function youDied(){
-
-    text.innerHTML += '<p class="dead"><br> YOU DIEDED!</p> <p> Vill du spela igen? (J/N)</p>'
-    button.onclick = startOver
-
-    function startOver(){
-        switch (input.value) {
-            case 'j':
-                text.innerHTML = 'En solig dag i augusti vaknar du av att din mamma ropar på dig. (Skriv ditt namn)'
-                button.onclick = initialInput
-                break
-
-            case 'n':
-                text.innerHTML = '<p> Så spelet var för svårt för dig? Det är okej. Du är välkommen tillbaka när du blivit lite smartare. </p>'
-                break
-
-            default:
-                text.innerHTML = wrongInput
-        }
-    }
-}
