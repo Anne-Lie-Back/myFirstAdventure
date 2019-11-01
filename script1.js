@@ -70,7 +70,7 @@ function event2(){
                         + basket[1] + '. Målet är: mormors stuga!' + 
                          '<br> <br> Du traskar ut i den gröna, frodiga skogen. Fåglar kvittrar och solens strålar som silar genom trädkronorna och skapar skuggspel över stigen. </p>'
 
-    seeBreadCrumb()
+    seeBreadCrumb(event3)
 }
 
 /**
@@ -159,7 +159,7 @@ function event4(){
             case 'S':
                 text.innerHTML += '<p> Du bestämmer dig för att allt fluffigt går att lita på och berättar sanningen: <br> "Hon bor i andra sidan skogen, om du tar höger vid stigen" </p>'
 
-                seeBreadCrumb()
+                seeBreadCrumb(event5)
                 break
 
             case 'f':
@@ -181,7 +181,7 @@ function event4(){
         
         text.innerHTML += '<br> "'+ input.value + '" <br> "Oj, då har du en bit att gå. Bäst att låta dig traska vidare. Farväl ' + userName + '!"'
         
-        seeBreadCrumb()
+        seeBreadCrumb(event5)
     }
 }
 

@@ -5,7 +5,7 @@
  * NEED TO FIX ISSUE WITH PROGRAM LOSING PACE AFTER everything that's not wrong input.
  */
 
-function seeBreadCrumb(){
+function seeBreadCrumb(nextEvent){
 
     text.innerHTML += '<br> Din färd mot mormors stuga fortsätter. På stigen ser du en brödsmula. Plocka upp brödsmulan? (J/N)'
 
@@ -32,14 +32,14 @@ function seeBreadCrumb(){
                 case 'J':
                     userStrength = userStrength + 1
                     text.innerHTML += '<br> Du gör en armhävning och känner dig som en riktig spännis.'
-                    eventDirection()
+                    button.onclick = nextEvent
                     break
                 
             
                 case 'n':
                 case 'N':
                     text.innerHTML += '<br> Äsh, trams. Vem i sitt sinnes fulla bruk gör en armhävning mitt ute i skogen?'
-                    eventDirection()
+                    button.onclick = nextEvent
                     break
                 
             
@@ -53,18 +53,16 @@ function seeBreadCrumb(){
         case 'n':
         case 'N':
             text.innerHTML += '<br> Brödsmulan ser inte tillräckligt aptitlig ut. Du promenerar vidare.'
-            eventDirection()
+            button.onclick = nextEvent
             break
             
         default:
             text.innerHTML += wrongInput
             button.onclick = pickBreadCrumb
-        }
-
-        
+        }      
     }
 
-    function eventDirection(){
+/*     function eventDirection(){
      
         switch (breadCrumbsLeft){
 
@@ -80,5 +78,5 @@ function seeBreadCrumb(){
                 console.log('Nu blev det fel')
 
         }
-    }
+    } */
 }
