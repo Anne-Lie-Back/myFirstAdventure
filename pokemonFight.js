@@ -1,0 +1,99 @@
+/**
+ * --- THE PIKACHU PART---
+ * @param {Boolean} pikachuFed tells if Pikachu has been fed with food or not
+ * 
+ *  A switch to help determine wich function the user would like to invoke : to capture, to feed or to run away.
+ * 
+ * --- capturePikachu ---
+ * @param {String} randomNumber - helps to store a random number that's used to determine of the user is successful in capturing Pikachu or not.
+ * 
+ */
+
+let pikachuFed = false
+
+function pikachuEvent(){
+
+    /*     const condition = input.value
+        condition.toLowerCase() */
+    
+        switch(input.value){
+    
+            case 'fånga':
+                console.log('fånga')
+                capturePikachu()
+                break
+            
+            case 'mata':
+                    console.log('mata')
+                    text.innerHTML += '<p> I din korg har du: ' + basket + '. Vad vill du ge Pikachu? </p>'
+                    
+                    button.onclick = feedPikachu
+                break
+    
+            case 'fly':
+                text.innerHTML += 'Ingen minns en fegis, men en fegis får iallafall leva längre.'
+
+                button.onclick = event6
+                break
+    
+            default: 
+                text.innerHTML += wrongInput
+        }
+    }
+
+function capturePikachu(){
+
+    text.innerHTML += '<p> Du kastar pokebollen du (tydligen) haft i fickan hela tiden </p>'
+
+    let randomNumber = Math.round(( Math.random() * 10 ) +1)
+
+    if (randomNumber >= 9){
+        
+        console.log(randomNumber)
+        text.innerHTML += ' <p> Grattis! Du har just fångat din första Pokémon </p>'
+        basket.push('pokemon')
+        pikachu = true
+    }
+
+    else{
+        
+        text.innerHTML += '<p> Oh no! Pikachu lyckades rulla undan!' 
+        
+            if (pikachuFed == false){
+
+                healthPoints = healthPoints - 2
+                text.innerHTML += 'Dessutom hoppar den fram och biter dig i fingret. <br> "AJ" (Du har nu ' +
+                healthPoints + ' HP) <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>'
+                console.log(healthPoints)
+                
+            }
+            else{
+                text.innerHTML += '<p> "Piiiika pi?" <br> Pikachu tittar på dig med sina stora runda ögon och lägger huvudet på sne <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>'
+            }
+        
+        button.onclick = pikachuEvent
+    }
+
+}
+
+function feedPikachu(){
+
+    useBasketItem(input.value)
+    pikachuFed = true
+
+    if (input.value === 'svamp' && mushroom){
+        text.innerHTML += '<p> Du ser hur Pikachu börjar hosta. Hans gulliga ansikte förändras sakta till en blå-lila färg samtidigt som blod ' + 
+        ' börjar rinna ur hans näsa. Han segnar ner och flämtar ett "piikaa~" med sitt sista andetag. <br> Snyft </p>'
+
+        button.onclick = event6
+    }
+
+    else (
+        text.innerHTML += '<p>"Pika pikaaaa~" kurrar pikachu och ser nöjd ut. <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>' 
+    )
+
+    button.onclick = pikachuEvent
+
+    console.log(basket)
+} 
+

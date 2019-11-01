@@ -185,16 +185,6 @@ function event4(){
     }
 }
 
-/**
- * --- THE PIKACHU PART---
- * @param {String} condition - helps the user to right input-value non-dependent of lowercase letters or not
- * 
- *  A switch to help determine wich function the user would like to invoke : to capture, to feed or to run away.
- * 
- * --- capturePikachu ---
- * @param {String} randomNumber - helps to store a random number that's used to determine of the user is successful in capturing Pikachu or not.
- * 
- */
 
 function event5(){
 
@@ -203,79 +193,12 @@ function event5(){
     button.onclick = pikachuEvent
 }
 
-function pikachuEvent(){
-
-/*     const condition = input.value
-    condition.toLowerCase() */
-
-    switch(input.value){
-
-        case 'fånga':
-            console.log('fånga')
-            capturePikachu()
-            break
-        
-        case 'mata':
-                console.log('mata')
-                text.innerHTML += '<p> I din korg har du: ' + basket + '. Vad vill du ge Pikachu? </p>'
-                
-                button.onclick = feedPikachu
-            break
-
-        case 'fly':
-                console.log('fly')
-            // runAwayPikachu()
-            break
-
-        default: 
-            text.innerHTML += wrongInput
-    }
-
-    function capturePikachu(){
-
-        text.innerHTML += '<p> Du kastar pokebollen du (tydligen) haft i fickan hela tiden </p>'
-
-        let randomNumber = Math.round(( Math.random() * 10 ) +1)
-
-        if (randomNumber >= 8){
-            
-            text.innerHTML += ' <p> Grattis! Du har just fångat din första Pokémon </p>'
-            basket.push('pokemon')
-            pikachu = true
-        }
-
-        else{
-            healthPoints = healthPoints - 1
-            text.innerHTML += '<p> Oh no! Pikachu lyckades rulla undan. Dessutom hoppar den fram och biter dig i fingret. <br> "AJ" (Du har nu ' +
-                                healthPoints + ' HP) <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>'
-            
-            button.onclick = pikachuEvent
-        }
-
-    }
-
-    function feedPikachu(){
-
-        if (input.value === 'svamp' && mushroom === true){
-
-                console.log('den dör')
-        }
-
-        else if  (input.value === basket[0] || basket[1] ){
-
-                console.log('mums')
-        
-        }
-
-        else{
-            text.innerHTML = wrongInput
-
-            button.onclick = feedPikachu
-        }
-
-        
-    }   
+function event6(){
+    text.innerHTML = 'Hellu!'
 }
+
+
+
 
 function useBasketItem(input){
 
@@ -297,10 +220,6 @@ function useBasketItem(input){
     return itemWasFound
 }
 
-/**
- * ---- BREADCRUMB LOOP ---
- * functions played everytime the user sees a breadcrumb
- */
 
 
 
