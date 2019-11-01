@@ -7,9 +7,8 @@
 
 function seeBreadCrumb(nextEvent){
 
-    text.innerHTML += '<br> Ditt äventyr fortsätter. På stigen ser du en brödsmula. Plocka upp brödsmulan? (J/N)'
+    text.innerHTML += ' Plocka upp brödsmulan? (J/N)'
 
-    
     breadCrumbsLeft = breadCrumbsLeft - 1
     button.onclick = pickBreadCrumb
 
@@ -32,14 +31,14 @@ function seeBreadCrumb(nextEvent){
                 case 'J':
                     userStrength = userStrength + 1
                     text.innerHTML += '<br> Du gör en armhävning och känner dig som en riktig spännis.'
-                    button.onclick = nextEvent
+                    nextEvent()
                     break
                 
             
                 case 'n':
                 case 'N':
                     text.innerHTML += '<br> Äsh, trams. Vem i sitt sinnes fulla bruk gör en armhävning mitt ute i skogen?'
-                    button.onclick = nextEvent
+                    nextEvent()
                     break
                 
             
@@ -53,7 +52,7 @@ function seeBreadCrumb(nextEvent){
         case 'n':
         case 'N':
             text.innerHTML += '<br> Brödsmulan ser inte tillräckligt aptitlig ut. Du promenerar vidare.'
-            button.onclick = nextEvent
+            nextEvent()
             break
             
         default:

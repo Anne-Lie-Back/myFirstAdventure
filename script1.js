@@ -181,7 +181,8 @@ function event4(){
 
     function tellLie(){
         
-        text.innerHTML += '<br> "'+ input.value + '" <br> "Oj, då har du en bit att gå. Bäst att låta dig traska vidare. Farväl ' + userName + '!"'
+        text.innerHTML += '<br> "'+ input.value + '" <br> "Oj, då har du en bit att gå. Bäst att låta dig traska vidare. Farväl ' + userName + 
+                            '!" <br> Ditt äventyr fortsätter. På stigen ser du en brödsmula.'
         
         seeBreadCrumb(event5)
     }
@@ -204,7 +205,7 @@ function event6(){
         case 'j':
         case 'J':
             stick = true
-            basket.push(pinne)
+            basket.push('pinne')
 
             text.innerHTML += '<p> Du plockar upp den och lägger den i din korg. I din korg ser du nu massa bra grejer som: ' + basket + '. </p>'
 
@@ -224,7 +225,8 @@ function event6(){
             text.innerHTML += wrongInput
     }
 
-    event7()
+    text.innerHTML += '<br> Ditt äventyr fortsätter. På stigen ser du en brödsmula.'
+    seeBreadCrumb(event7)
 }
 
 function event7(){
@@ -252,9 +254,7 @@ function event7(){
     }
 }
 
-function goToTheWitch(){
-    text.innerHTML += 'HÄXA'
-}
+
 
 function goToGrandma(){
     text.innerHTML += 'MORMOR'
