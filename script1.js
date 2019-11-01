@@ -12,6 +12,7 @@
  * @param {Number} breadCrumbsLeft - tells how many crumbs there's left to find and tells the programme where you are in the story/series of head-functions
  * @param {Boolean} mushroom - tells if the user has the mushroom
  * @param {Boolean} pikachu - tells if user has Pikachu or not
+ * @param {Boolean} stick - tells if the user has a stick or not
  */
 let text = document.getElementById("userText")
 let input = document.getElementById("userInput")
@@ -27,6 +28,7 @@ let breadCrumbsLeft = 5
 let mushroom = false
 let wolf = true
 let pikachu = false
+let stick = false
 
 
 
@@ -193,32 +195,43 @@ function event5(){
     button.onclick = pikachuEvent
 }
 
+/**
+ * Event6 is a function where the user can choose to pick up a stick or not.
+ */
+
 function event6(){
-    text.innerHTML = 'Hellu!'
+    switch(input.value){
+        case 'j':
+        case 'J':
+            stick = true
+            basket.push(pinne)
+
+            text.innerHTML += '<p> Du plockar upp den och lägger den i din korg. I din korg ser du nu massa bra grejer som: ' + basket + '. </p>'
+
+            console.log(basket)
+            event7()
+
+        case 'n':
+        case 'N':
+
+        text.innerHTML += '<p> Du gillar inte pinnar, dessutom kan de vara farliga. Man kan ju faktiskt snubbla på den. </p>'
+
+        event7()
+
+        default:
+            text.innerHTML += wrongInput
+    }
+}
+
+function event7(){
+    text.innerHTML = '<p> Du kommer fram till ett vägskäl </p>'
+
 }
 
 
 
 
-function useBasketItem(input){
 
-    let itemWasFound = false
-    let itemIndex = -1
-    for (const index in basket){
-        const item = basket[index]
-        if (item == input) {
-            itemWasFound = true
-            itemIndex = index
-            break
-        }
-    }
-
-    if (itemWasFound){
-        basket.splice(itemIndex, 1)
-    }
-
-    return itemWasFound
-}
 
 
 

@@ -6,10 +6,17 @@
  * 
  * --- capturePikachu ---
  * @param {String} randomNumber - helps to store a random number that's used to determine of the user is successful in capturing Pikachu or not.
- * 
+ * @param {String} storyBeforeStickEvent - a string to lead user on to the stick-function
  */
 
 let pikachuFed = false
+const storyBeforeStickEventSad = '<p> Med tungt hjärta promenerar du vidare, gråten nära till hands. Aldrig har något så skrämmande hänt dig förut.' + 
+                                    'Men blicken djupt sjunken i marken framför dig så är det svårt att missa den pinne som ligger tvärs över vägen.' + 
+                                    'Vill du plocka upp den? (J/N)</p>';
+
+const storyBeforeStickEventHappy = ' Vilken härlig dag! Inte bara solen skiner, utan du har också lyckats skaffa dig en gullig kompis. Nynnandes på en' + 
+                                    'trevlig truddelutt och blicken höjd i en nöjd manér så missar du totalt pinnen som ligger utbredd över stigen. ' + 
+                                    '<br> SCHMACK! (-1 HP) Det där gjorde ont tänkte du, vänder dig bakåt och ser pinnen som orsakade olyckan. Vill du plocka upp den? (J/N) </p>'
 
 function pikachuEvent(){
 
@@ -31,7 +38,7 @@ function pikachuEvent(){
                 break
     
             case 'fly':
-                text.innerHTML += 'Ingen minns en fegis, men en fegis får iallafall leva längre.'
+                text.innerHTML += 'Ingen minns en fegis, men en fegis får iallafall leva längre.' + storyBeforeStickEventSad
 
                 button.onclick = event6
                 break
@@ -45,19 +52,25 @@ function capturePikachu(){
 
     text.innerHTML += '<p> Du kastar pokebollen du (tydligen) haft i fickan hela tiden </p>'
 
-    let randomNumber = Math.round(( Math.random() * 10 ) +1)
+    let chanceToCatch = getRandomNumber()
+    
 
-    if (randomNumber >= 9){
+    if ( chanceToCatch >= 4){
         
-        console.log(randomNumber)
-        text.innerHTML += ' <p> Grattis! Du har just fångat din första Pokémon </p>'
+        healthPoints = healthPoints - 1
+        text.innerHTML += ' <p> Grattis! Du har just fångat din första Pokémon </p> <br>' + storyBeforeStickEventHappy
         basket.push('pokemon')
         pikachu = true
+        console.log(healthPoints, chanceToCatch)
+
+        button.onclick = event6
     }
 
     else{
         
-        text.innerHTML += '<p> Oh no! Pikachu lyckades rulla undan!' 
+        text.innerHTML += '<p> Oh no! Pikachu lyckades rulla undan!'
+        console.log(chanceToCatch)
+        
         
             if (pikachuFed == false){
 
@@ -83,7 +96,7 @@ function feedPikachu(){
 
     if (input.value === 'svamp' && mushroom){
         text.innerHTML += '<p> Du ser hur Pikachu börjar hosta. Hans gulliga ansikte förändras sakta till en blå-lila färg samtidigt som blod ' + 
-        ' börjar rinna ur hans näsa. Han segnar ner och flämtar ett "piikaa~" med sitt sista andetag. <br> Snyft </p>'
+        ' börjar rinna ur hans näsa. Han segnar ner och flämtar ett "piikaa~" med sitt sista andetag. <br> Snyft </p> <br>' + storyBeforeStickEventSad
 
         button.onclick = event6
     }
@@ -96,4 +109,29 @@ function feedPikachu(){
 
     console.log(basket)
 } 
+
+function useBasketItem(input){
+
+    let itemWasFound = false
+    let itemIndex = -1
+    for (const index in basket){
+        const item = basket[index]
+        if (item == input) {
+            itemWasFound = true
+            itemIndex = index
+            break
+        }
+    }
+
+    if (itemWasFound){
+        basket.splice(itemIndex, 1)
+    }
+
+    return itemWasFound
+}
+
+function getRandomNumber(randomNumber){
+    return randomNumber = Math.round( Math.random() * 4 )
+    
+}
 
