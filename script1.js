@@ -24,7 +24,7 @@ let userName
 let healthPoints = 20
 let userStrength = 1
 let breadCrumbs = 5
-let breadCrumbsLeft = 5
+
 let mushroom = false
 let wolf = true
 let pikachu = false

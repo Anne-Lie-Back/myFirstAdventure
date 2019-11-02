@@ -9,7 +9,6 @@ function seeBreadCrumb(nextEvent){
 
     text.innerHTML += ' Plocka upp brödsmulan? (J/N)'
 
-    breadCrumbsLeft = breadCrumbsLeft - 1
     button.onclick = pickBreadCrumb
 
     function pickBreadCrumb(){ 
