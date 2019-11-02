@@ -75,10 +75,15 @@ function capturePikachu(){
             if (pikachuFed == false){
 
                 healthPoints = healthPoints - 2
-                zeroHp()
-                text.innerHTML += 'Dessutom hoppar den fram och biter dig i fingret. <br> "AJ" (Du har nu ' +
-                healthPoints + ' HP) <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>'
-                console.log(healthPoints)
+                text.innerHTML += 'Dessutom hoppar den fram och biter dig i fingret.'
+                
+                    if(healthPoints === 0){
+                        youDied()
+                    }
+                    else{
+                        text.innerHTML += '<br> "AJ" (Du har nu ' + healthPoints + ' HP) <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>'
+                        console.log(healthPoints)
+                    }
                 
             }
             else{

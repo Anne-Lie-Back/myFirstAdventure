@@ -34,13 +34,6 @@ function getRandomNumber(randomNumber){
  * Function that tells us the user is dead because 0HP
  */
 
-function zeroHp(){
-    if (healtPoints === 0){
-        youDied()
-    }
-}
-
-
 /**
  * ----- DEAD ----
  * Function played when user dies
