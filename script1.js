@@ -70,7 +70,8 @@ function event2(){
     text.innerHTML += '<p>"Tror du verkligen att hon dricker ' + basket[1] + '? Jaja, hon dricker säkert det mesta. <br>' +
                         userName + ' med ett HP på ' + healthPoints + ' ger sig ut i skogen med en korg med ' + basket[0] + ' och ' 
                         + basket[1] + '. Målet är: mormors stuga!' + 
-                         '<br> <br> Du traskar ut i den gröna, frodiga skogen. Fåglar kvittrar och solens strålar som silar genom trädkronorna och skapar skuggspel över stigen. </p>'
+                         '<br> <br> Du traskar ut i den gröna, frodiga skogen. Fåglar kvittrar och solens strålar som silar genom trädkronorna och skapar skuggspel över stigen.'
+                         ' <br> Du ser en ensam liten brödsmula ligga på stigen </p>'
 
     seeBreadCrumb(event3)
 }
