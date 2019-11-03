@@ -11,7 +11,7 @@
  let witchHP = 20
  const witchStrength = 1
  let wolfHP = 30
- const wolfStrength = 4
+ let wolfStrength = 4
  let witch = true
  let stickThrown = false
  let  pikachuFight = false

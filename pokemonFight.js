@@ -75,7 +75,7 @@ function capturePikachu(){
         
             if (pikachuFed == false){
 
-                healthPoints = healthPoints - 2
+                healthPoints = healthPoints - 3
                 text.innerHTML += 'Dessutom hoppar den fram och biter dig i fingret.'
                 
                     if(healthPoints === 0){

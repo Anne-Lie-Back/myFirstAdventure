@@ -120,7 +120,7 @@ function hitTheWitch(){
     
     let hitOrMiss = getRandomNumber()
 
-    if (hitOrMiss >= 2){
+    if (hitOrMiss >= 1){
         witchHP = witchHP - userStrength
         text.innerHTML += '<p> Du träffade! <br> "AJ, förgrymmade unge!"</p>'
         console.log(witchHP)
@@ -178,7 +178,7 @@ function fightingPikachu(){
             console.log(wolfHP)
 
             if(wolfHP <= 0){
-                text.innerHTML += '<p> Vargen: "Jag vill inte dö nu! Jag som alltid drömt om att få leka apport inna jag dör". <br>' + 
+                text.innerHTML += '<p> Vargen: "Jag vill inte dö nu! Jag som alltid drömt om att få leka apport innan jag dör". <br>' + 
                 'Vargen faller ihop död på marken utan sin livsdröm uppfylld </p>'
                 
                 wolf = false
@@ -249,7 +249,7 @@ function wolfAndWitchHitsBack(){
 
     else if( wolf && !witch && !stickThrown){
 
-        text.innerHTML += '<p>Vargen: "Du dödade häxan din lille skit! Hon som skulle bjuda mig på mat!"</p>'
+        text.innerHTML += '<p> Vargen: "Du dödade häxan din lille skit! Hon som skulle bjuda mig på mat!"</p>'
         hitByWolf()
     }
 
@@ -259,13 +259,16 @@ function wolfAndWitchHitsBack(){
 
     else{
         text.innerHTML += '<p> <br> Lugnet lägger sig över slagfältet. </p>'
+        fightTheWitch()
     }
 
-    if(pikachuFight){
-        fightingPikachu()   
+    if(healthPoints >= 1){
+        if(pikachuFight){
+            fightingPikachu()   
+        }
+        fightTheWitch()
     }
-
-    fightTheWitch()
+    
 }
 
 /**
@@ -273,20 +276,21 @@ function wolfAndWitchHitsBack(){
  */
 
 function hitByWitch(){
+    if (healthPoints >= 1){
+        let hitOrMiss = getRandomNumber()
+        if (hitOrMiss >= 1){
+            healthPoints = healthPoints - witchStrength
+            text.innerHTML += '<p> Häxan träffar dig med ett slag. <br> "Mwehehehe, snart blir det barnpaj till middag!" <br> Du har nu ' + healthPoints +
+            'HP kvar </p>'
 
-    let hitOrMiss = getRandomNumber()
-    if (hitOrMiss >= 1){
-        healthPoints = healthPoints - witchStrength
-        text.innerHTML += '<p> Häxan träffar dig med ett slag. <br> "Mwehehehe, snart blir det barnpaj till middag!" <br> Du har nu ' + healthPoints +
-        'HP kvar </p>'
-
-        if(healthPoints <= 0){
-            youDied()
+            if(healthPoints <= 0){
+                youDied()
+            }
         }
-    }
 
-    else{
-        text.innerHTML += '<p> Du lyckas rulla undan som en riktig Ninja. Häxan skriker i frustration: <br> "Djävulens avkomma!" </p>'
+        else{
+            text.innerHTML += '<p> Du lyckas rulla undan som en riktig Ninja. Häxan skriker i frustration: <br> "Djävulens avkomma!" </p>'
+        }
     }
 
 }
@@ -297,20 +301,22 @@ function hitByWitch(){
 
 function hitByWolf(){
 
-    let hitOrMiss = getRandomNumber()
-    if (hitOrMiss >= 1){
-        healthPoints = healthPoints - wolfStrength
-        text.innerHTML += '<p> Vargen träffar dig med sina vassa klor. <br> "Snart ska jag äta upp dig!" <br> Du har nu ' + healthPoints +
-        'HP kvar </p>'
+    if (healthPoints >= 1){
+        let hitOrMiss = getRandomNumber()
+        if (hitOrMiss >= 1){
+            healthPoints = healthPoints - wolfStrength
+            text.innerHTML += '<p> Vargen träffar dig med sina vassa klor. <br> "Snart ska jag äta upp dig!" <br> Du har nu ' + healthPoints +
+            'HP kvar </p>'
 
-        if(healthPoints <= 0){
-            youDied()
+            if(healthPoints <= 0){
+                youDied()
+            }
         }
-    }
 
-    else{
-        text.innerHTML += '<p> Du lyckas ducka undan när vargens stora fluffiga tass kommer farande. Vargen gnyr ledsamt: <br> "Typiska människor ' + 
-        'med sin dubbelmoral. Ni vill klappa oss, men om vi vill klappa till er så får vi inte det " </p>'
+        else{
+            text.innerHTML += '<p> Du lyckas ducka undan när vargens stora fluffiga tass kommer farande. Vargen gnyr ledsamt: <br> "Typiska människor ' + 
+            'med sin dubbelmoral. Ni vill klappa oss, men om vi vill klappa till er så får vi inte det " </p>'
+        }
     }
 }
 
@@ -346,11 +352,11 @@ function checkBasket(){
                 }
 
                 else if(!witch && wolf && pikachuFight){
-                    text.innerHTML += '<p> Vem ska få svampen? <br> - Häxan <br> - Vargen <br> - Pikachu <br> - Du </p>'
+                    text.innerHTML += '<p> Vem ska få svampen? <br> - Vargen <br> - Pikachu <br> - Du </p>'
                 }
 
                 
-                else if(!witch && wolf && !pikachuFight){
+                else if(!witch && wolf && !pikachuFight && !stickThrown){
                     text.innerHTML += '<p> Vem ska få svampen? <br> - Vargen <br> - Du </p>'
                 }
 
@@ -391,7 +397,7 @@ function checkBasket(){
         }
         else{
             text.innerHTML += wrongInput
-            checkBasket()
+            button.onclick = chooseBasketItem
         }
     }
 }
