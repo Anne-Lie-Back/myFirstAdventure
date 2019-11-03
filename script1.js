@@ -205,7 +205,6 @@ function event6(){
     switch(input.value){
         case 'j':
         case 'J':
-            stick = true
             basket.push('pinne')
 
             text.innerHTML += '<p> Du plockar upp den och lägger den i din korg. I din korg ser du nu massa bra grejer som: ' + basket + '. </p>'
