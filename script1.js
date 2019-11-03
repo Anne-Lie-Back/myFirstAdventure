@@ -27,7 +27,6 @@ let breadCrumbs = 5
 
 let mushroom = false
 let wolf = true
-let pikachu = false
 let stick = false
 
 

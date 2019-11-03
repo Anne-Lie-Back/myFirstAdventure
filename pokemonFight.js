@@ -9,6 +9,7 @@
  * @param {String} storyBeforeStickEvent - a string to lead user on to the stick-function
  */
 
+let pikachu = false
 let pikachuFed = false
 const storyBeforeStickEventSad = '<p> Med tungt hjärta promenerar du vidare, gråten nära till hands. Aldrig har något så skrämmande hänt dig förut.' + 
                                     'Men blicken djupt sjunken i marken framför dig så är det svårt att missa den pinne som ligger tvärs över vägen.' + 

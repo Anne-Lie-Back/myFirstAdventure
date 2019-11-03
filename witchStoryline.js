@@ -14,6 +14,7 @@
  const wolfStrength = 4
  let witchAlive = true
  let stickThrown = false
+ let = pikachuFight = false
 
 /**
  * This function takes the user further down the path to the left and invites to a breadcrumb-function
@@ -136,7 +137,16 @@ function knockOnDoor(){
 
                     switch(input.value.toLowerCase()){
                         case 'n':
-                            text.innerHTML += '<p> DET BLIR TJAFFS </p>'
+                           
+                            text.innerHTML += '<p> Häxan: "VA?! Vill du inte ha mina kakor? Nå jag får väl äta upp dig trots att du knappt kommer mätta" <br> Äta upp dig? Det vill du ju inte <br> ' + 
+                            ' Du springer ut från huset men häxan hinner ifatt. </p>'
+
+                            if(wolf){
+                                text.innerHTML += '<p> Inte nog med att häxan hinner ikapp. Du springer rakt i en fluffig vägg. Det är vargen. <br> Åh nej, dubbel trubbel...</p>'
+                            }
+
+                            text.innerHTML += '<p> Du som hatar bråk har inget val. Nu blir det bråk. </p>'
+                            
                             fightTheWitch()
                             
                             break
@@ -232,13 +242,6 @@ function chooseHitWitchOrWolf(){
         button.onclick = hitWitchOrWolf
     }
 
-    //NEED TO BE MOVED TO RIGHT PLACE 
-
-    else if (!witch && wolf && stickThrown) {
-        text.innerHTML += ' <p> Vargen jagar glatt sin pinne och har inget intresse av att äta upp dig längre. </p>'
-        wolf = false
-    }
-
     else if (wolf && !stickThrown && !witch){
         hitTheWolf()
     }
@@ -267,7 +270,7 @@ function hitWitchOrWolf(){
         default:
             text.innerHTML += wrongInput
     }
-
+    fightingPikachu()
     wolfAndWitchHitsBack()
 
 }
@@ -286,6 +289,7 @@ function hitTheWitch(){
 
         if(witchHP === 0){
             text.innerHTML += '<p> "Åh nej! Jag dör! JAG HATAR BARN" </p>'
+            witch = false
         }
     }
 
@@ -305,6 +309,8 @@ function hitTheWolf(){
         if(wolfHP === 0){
             text.innerHTML += '<p> Vargen: "Jag vill inte dö nu! Jag som alltid drömt om att få leka apport inna jag dör". <br>' + 
             'Vargen faller ihop död på marken utan sin livsdröm uppfylld </p>'
+            
+            wolf = false
         }
     }
 
@@ -313,6 +319,64 @@ function hitTheWolf(){
     }
 
 }
+
+function fightingPikachu(){
+
+    if (wolf && witch){
+    getRandomNumber(witchOrWolf)
+
+        if(witchOrWolf >= 2){
+            wolfHP = wolfHP - 2
+            text.innerHTML += '"Blixtra vargen Pikachu!" ropar du med hög myndig stämma. <br> "PiiiiiiiiiiiiiiiKAAAAAAAAAA!" <br>' + 
+            ' Vargen gnyr ledsamt. Det luktar lite bränt'
+
+            if(wolfHP === 0){
+                text.innerHTML += '<p> Vargen: "Jag vill inte dö nu! Jag som alltid drömt om att få leka apport inna jag dör". <br>' + 
+                'Vargen faller ihop död på marken utan sin livsdröm uppfylld </p>'
+                
+                wolf = false
+            }
+
+            else{
+                witchHP = witchHP - 2
+                text.innerHTML += '"Blixtra häxan Pikachu!" ropar du med hög myndig stämma. <br> "Piiiiika CHUUUUUUUUUUUUUU!" <br>' + 
+                ' Häxan skriker högt- Hennes hår ser ännu vildare ut nu. Det luktar lite bränt'
+        
+                if(witchHP === 0){
+                    text.innerHTML += '<p> "Åh nej! Jag dör! JAG HATAR BARN" </p>'
+                    witch = false
+                }
+            }
+        }
+    }
+
+    else if(!witch && wolf){
+
+        wolfHP = wolfHP - 2
+        text.innerHTML += '"Blixtra vargen Pikachu!" ropar du med hög myndig stämma. <br> "PiiiiiiiiiiiiiiiKAAAAAAAAAA!" <br>' + 
+        ' Vargen gnyr ledsamt. Det luktar lite bränt'
+
+        if(wolfHP === 0){
+            text.innerHTML += '<p> Vargen: "Jag vill inte dö nu! Jag som alltid drömt om att få leka apport inna jag dör". <br>' + 
+            'Vargen faller ihop död på marken utan sin livsdröm uppfylld </p>'
+            
+            wolf = false
+        }
+    }
+
+    else{
+
+        witchHP = witchHP - 2
+        text.innerHTML += '"Blixtra häxan Pikachu!" ropar du med hög myndig stämma. <br> "Piiiiika CHUUUUUUUUUUUUUU!" <br>' + 
+        ' Häxan skriker högt- Hennes hår ser ännu vildare ut nu. Det luktar lite bränt'
+
+        if(witchHP === 0){
+            text.innerHTML += '<p> "Åh nej! Jag dör! JAG HATAR BARN" </p>'
+            witch = false
+        }
+    }
+}
+
 /**
  *  The function that helps identify who will hit you the current round
  */
@@ -390,21 +454,100 @@ function checkBasket(){
     
     function chooseBasketItem(){
 
-        useBasketItem(input.value)
+        const chosenItem = input.value.toLowerCase()
+        useBasketItem(chosenItem)
 
-        if (chosenItem == 'svamp' && svamp && wolf && witch){
-            text.html += '<p> Vem ska få svampen? <br> - Häxan <br> - Vargen</p>'
+        if (chosenItem == 'svamp' && svamp){
+            console.log(basket)
 
-                
+            if(wolf && witch && pikachuFight){
+
+                text.html += '<p> Vem ska få svampen? <br> - Häxan <br> - Vargen <br> - Pikachu - <br> - Du </p>'
+            }
+
+            else if(witch && wolf && !pikachuFight){
+                text.html += '<p> Vem ska få svampen? <br> - Häxan <br> - Vargen <br> - Du </p>'
+            }
+
+            else if(witch && !wolf && pikachuFight && stickThrown){
+                text.html += '<p> Vem ska få svampen? <br> - Häxan <br> - Pikachu - <br> - Du </p>'
+            }
+
+            else if(!witch && wolf && pikachuFight){
+                text.html += '<p> Vem ska få svampen? <br> - Häxan <br> - Vargen <br> - Pikachu <br> - Du </p>'
+            }
+
+            
+            else if(!witch && wolf && !pikachuFight){
+                text.html += '<p> Vem ska få svampen? <br> - Vargen <br> - Du </p>'
+            }
+
+            else { 
+
+                text.html += '<p> Vem ska få svampen? <br> - Häxan <br> - Du </p>'
+            }
+            
+            button.onclick = giveMushroom 
         }
 
-        else if(chosenItem == 'pinne' && pinne)
 
-        else if(chosenItem == 'pinne' && pinne && wolf){
+        else if(chosenItem == 'pinne' && stick){
+            text.innerHTML += '<p> Du kastar pinnen mot häxan men den träffar inte.</p>'
+        }
+
+        else if(chosenItem == 'pinne' && stick && wolf){
             text.innerHTML += '<p> Du kastar pinnen. Vargen blir helt lyrisk och springer efter pinnen med stor entusiasm </p>'
+            stickThrown = true
+            stick = false
         }
 
+        else if (chosenItem == 'pokemon' && pikachu){
+            text.innerHTML += '<p> Du kastar ut din pokéboll. <br> Pikachu: "PikaPIII!" <br> Pikachu joinade fighten. </p>'
+            PikachuFight = true
+        }
+
+        else{
+            text.InnerHTML += "Ditt HP återställs"
+            healthPoints = 20
+        }
+
+        chooseAction()
     }
+}
+
+function giveMushroom(){
+    switch (input.value.toLowerCase()){
+
+        case 'häxan' && witch:
+            text.innerHTML += '<p> Du kastar svampen mot häxan, men hon tar ett steg åt sidan. <br> Häxan: "Mwehehehe! ' + 
+            ' Tror du jag skulle äta den där? den är ju dödligt giftig. </p>'
+            break
+
+        case 'vargen' && wolf:
+           text.innerHTML += '<p> Du kastar svampen mot vargen. Vargens inre tamhund reagerar instinktivt. Han öppnar sitt stora gap ' + 
+           ' och fångar svampen i luften. Vargen segnar ihop på marken. Ur hans näsa börjar det rinna blod. Med en sista tårfyld blick tittar han på dig ' + 
+           'och viskar fram ett svagt "Hur kunde du?" innan han faller ihop på marken. Död.'
+
+           wolf = false
+           break
+
+        case 'pikachu' && pikachu:
+                text.innerHTML += '<p> Du ser hur Pikachu börjar hosta. Hans gulliga ansikte förändras sakta till en blå-lila färg samtidigt som blod ' + 
+                ' börjar rinna ur hans näsa. Han segnar ner och flämtar ett "piikaa~" med sitt sista andetag. <br> Snyft </p>'
+                
+                pikachu = false
+                break
+
+        case 'du':
+        case 'jag':
+            youDied()
+            break
+        
+        default:
+            text.innerHTML += wrongInput
+        
+    }
+
 }
 
 
