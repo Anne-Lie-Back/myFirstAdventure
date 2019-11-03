@@ -56,7 +56,7 @@ function capturePikachu(){
     let chanceToCatch = getRandomNumber()
     
 
-    if ( chanceToCatch >= 3){
+    if ( chanceToCatch >= 4){
         
         healthPoints = healthPoints - 1
         text.innerHTML += ' <p> Grattis! Du har just fångat din första Pokémon </p> <br>' + storyBeforeStickEventHappy
@@ -98,19 +98,26 @@ function capturePikachu(){
 
 function feedPikachu(){
 
-    useBasketItem(input.value)
+    let itemToFeed = input.value.toLowerCase()
+    useBasketItem(itemToFeed)
+
     pikachuFed = true
 
-    if (input.value === 'svamp' && mushroom){
+    if (itemToFeed === 'svamp' && mushroom){
         text.innerHTML += '<p> Du ser hur Pikachu börjar hosta. Hans gulliga ansikte förändras sakta till en blå-lila färg samtidigt som blod ' + 
         ' börjar rinna ur hans näsa. Han segnar ner och flämtar ett "piikaa~" med sitt sista andetag. <br> Snyft </p> <br>' + storyBeforeStickEventSad
 
         button.onclick = event6
     }
 
-    else (
+    else if (itemToFeed === food || itemToFeed === drink)(
         text.innerHTML += '<p>"Pika pikaaaa~" kurrar pikachu och ser nöjd ut. <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>' 
     )
+
+    else{
+        text.innerHTML += wrongInput
+        button.onclick = feedPikachu
+    }
 
     button.onclick = pikachuEvent
 

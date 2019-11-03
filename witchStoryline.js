@@ -14,7 +14,7 @@
  const wolfStrength = 4
  let witch = true
  let stickThrown = false
- let = pikachuFight = false
+ let  pikachuFight = false
 
 /**
  * This function takes the user further down the path to the left and invites to a breadcrumb-function
@@ -141,7 +141,7 @@ function knockOnDoor(){
                     switch(input.value.toLowerCase()){
                         case 'n':
                            
-                            text.innerHTML += '<p> Häxan: "VA?! Vill du inte ha mina kakor? Nå jag får väl äta upp dig trots att du knappt kommer mätta" <br> Äta upp dig? Det vill du ju inte <br> ' + 
+                            text.innerHTML += '<p> Häxan: "VA?! Vill du inte ha mina kakor? Nå jag får väl äta upp dig trots att du knappt kommer mätta" <br> Äta upp dig? Vad är det för dumheter? <br> ' + 
                             ' Du springer ut från huset men häxan hinner ifatt. </p>'
 
                             if(wolf){

@@ -13,6 +13,9 @@
  * @param {Boolean} mushroom - tells if the user has the mushroom
  * @param {Boolean} pikachu - tells if user has Pikachu or not
  * @param {Boolean} stick - tells if the user has a stick or not
+ * @param {String} food - chosen food
+ * @param {String} drink - chosen drink
+ *
  */
 let text = document.getElementById("userText")
 let input = document.getElementById("userInput")
@@ -24,6 +27,8 @@ let userName
 let healthPoints = 20
 let userStrength = 1
 let breadCrumbs = 5
+let food
+let drink
 
 let mushroom = false
 let wolf = true
@@ -52,9 +57,10 @@ function initialInput(){
 }
 
  function event1(){
+     food = input.value
      basket.push(input.value)
 
-     text.innerHTML += '<p> "Okej, jaja. Jag packar väl ner ' + basket[0] + '. Vad tror du hon vill ha att dricka? </p>'
+     text.innerHTML += '<p> "Okej, jaja. Jag packar väl ner ' + food + '. Vad tror du hon vill ha att dricka? </p>'
 
      button.onclick = event2
 }
@@ -65,11 +71,12 @@ function initialInput(){
  * The user finds its first breadcrumb
  */
 function event2(){
+    drink = input.value
     basket.push(input.value)
 
-    text.innerHTML += '<p>"Tror du verkligen att hon dricker ' + basket[1] + '? Jaja, hon dricker säkert det mesta. <br>' +
-                        userName + ' med ett HP på ' + healthPoints + ' ger sig ut i skogen med en korg med ' + basket[0] + ' och ' 
-                        + basket[1] + '. Målet är: mormors stuga!' + 
+    text.innerHTML += '<p>"Tror du verkligen att hon dricker ' + drink + '? Jaja, hon dricker säkert det mesta. <br>' +
+                        userName + ' med ett HP på ' + healthPoints + ' ger sig ut i skogen med en korg med ' + food + ' och ' 
+                        + drink + '. Målet är: mormors stuga!' + 
                          '<br> <br> Du traskar ut i den gröna, frodiga skogen. Fåglar kvittrar och solens strålar som silar genom trädkronorna och skapar skuggspel över stigen.'
                          ' <br> Du ser en ensam liten brödsmula ligga på stigen </p>'
 
@@ -206,7 +213,7 @@ function event6(){
         case 'j':
         case 'J':
             basket.push('pinne')
-
+            stick = true
             text.innerHTML += '<p> Du plockar upp den och lägger den i din korg. I din korg ser du nu massa bra grejer som: ' + basket + '. </p>'
 
             console.log(basket)
