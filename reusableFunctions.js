@@ -41,6 +41,7 @@ function getRandomNumber(randomNumber){
 
 function youDied(){
 
+    basket = []
     text.innerHTML += '<p class="dead"><br> YOU DIEDED!</p> <p> Vill du spela igen? (J/N)</p>'
     button.onclick = startOver
 

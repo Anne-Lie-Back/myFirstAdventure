@@ -124,12 +124,12 @@ function hitTheWitch(){
         witchHP = witchHP - userStrength
         text.innerHTML += '<p> Du träffade! <br> "AJ, förgrymmade unge!"</p>'
         console.log(witchHP)
-        wolfAndWitchHitsBack()
-
+        
         if(witchHP <= 0){
             text.innerHTML += '<p> "Åh nej! Jag dör! JAG HATAR BARN" </p>'
             witch = false
         }
+        wolfAndWitchHitsBack()
     }
 
     else{
@@ -253,8 +253,12 @@ function wolfAndWitchHitsBack(){
         hitByWolf()
     }
 
-    else{
+    else if(witch && !wolf){
         hitByWitch()
+    }
+
+    else{
+        text.innerHTML += '<p> <br> Lugnet lägger sig över slagfältet. </p>'
     }
 
     if(pikachuFight){
@@ -387,7 +391,7 @@ function checkBasket(){
         }
         else{
             text.innerHTML += wrongInput
-            button.onclick = chooseBasketItem
+            checkBasket()
         }
     }
 }
