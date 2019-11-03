@@ -13,6 +13,7 @@
  let wolfHP = 30
  const wolfStrength = 4
  let witchAlive = true
+ let stickThrown = false
 
 /**
  * This function takes the user further down the path to the left and invites to a breadcrumb-function
@@ -160,15 +161,48 @@ function knockOnDoor(){
 
 }
 
+function fightTheWitch(){
+
+    if (witch && !wolf){
+        text.innerHTML += '<p> Häxan: "Det är ingen idé att kämpa emot. Min craving för barnpaj är för stor. Ge upp nu så lovar jag att du får välja' + 
+                            ' kryddning!" <br> Vargen: "Ja, ge upp ' + userName + ' så jag får välja kryddning! </p>'
+    }
+
+    else if(!witch && wolf && !stickThrown){
+        text.innerHTML += '<p> Vargen: "Du dödade min kompis! Nu ska du allt få!" </p>'
+        wolfStrength = 6
+    }
+
+    else if(witchHP == 0 && wolfHP == 0){
+        text.innerHTML += '<p> Häxan och Vargen är död. <br> Phew, det var en ansträngande fight tänker du och vänder på klacken för att gå mot mormors. ' + 
+        ' Men innan du går bryter du av ett stort hörn av pepparkakshusets tak... som färdkost.</p>'
+
+        goToGrandma()
+    }
+
+    else if(witchHP == 0 && stickThrown){
+        text.innerHTML += '<p> Häxan är död. Vargen jagar sina drömmar symboliserade i en pinne. Du bestämmer dig för att nu är det läge att gå till mormors stuga. Du är redan försenad dit.</p>'
+        
+        goToGrandma()
+    }
+    
+    else{
+        text.innerHTML += '<p> "Det är ingen idé att kämpa emot. Min craving för barnpaj är för stor. Ge upp nu så lovar jag att du får välja kryddning!" </p>'
+    }
+
+    chooseAction()
+}
+
 function chooseAction(){
     text.innerHTML += '<p> Vad vill du göra? <br> - Slå <br> - Ge upp <br> - Korgen </p>'
         switch (input.value.toLowerCase()){
             case 'slå': 
-            hitTheWitch()
+            chooseHitWitchOrWolf()
             break
 
             case 'ge upp':
             text.innerHTML += '<p> Pressen är för stor för dig. Du ger upp</p>'
+            youDied()
             break
 
             case 'korgen':
@@ -181,27 +215,9 @@ function chooseAction(){
 
 }
 
-
-
-function fightTheWitch(){
-
-    if (witch && !wolf){
-        text.innerHTML += '<p> Häxan: "Det är ingen idé att kämpa emot. Min craving för barnpaj är för stor. Ge upp nu så lovar jag att du får välja' + 
-                            ' kryddning!" <br> Vargen: "Ja, ge upp ' + userName + ' så jag får välja kryddning! </p>'
-    }
-
-    else if(!witch && wolf && !stick){
-        text.innerHTML += '<p> Du dödade min kompis! Nu ska du allt få!</p>'
-        wolfStrength = 6
-    }
-    
-    else{
-        text.innerHTML += '<p> "Det är ingen idé att kämpa emot. Min craving för barnpaj är för stor. Ge upp nu så lovar jag att du får välja kryddning!" </p>'
-    }
-
-    chooseAction()
-}
-
+/**
+ * ------- If SLÅ is chosen! -------
+ */
 
 /**
  * This function gives the option to choose if you would like to hit the wolf or witch (option only available if you lied to the wolf)
@@ -211,14 +227,20 @@ function fightTheWitch(){
 
 function chooseHitWitchOrWolf(){
 
-    if(wolf && !stick){
+    if(wolf && !stickThrown){
         text.innerHTML += '<p>Vem vill du slå? <br> - Häxan <br> - Vargen </p>'
         button.onclick = hitWitchOrWolf
     }
 
-    else if (!witch && wolf && stick) {
+    //NEED TO BE MOVED TO RIGHT PLACE 
+
+    else if (!witch && wolf && stickThrown) {
         text.innerHTML += ' <p> Vargen jagar glatt sin pinne och har inget intresse av att äta upp dig längre. </p>'
         wolf = false
+    }
+
+    else if (wolf && !stickThrown && !witch){
+        hitTheWolf()
     }
 
     else{
@@ -232,28 +254,14 @@ function chooseHitWitchOrWolf(){
   */
 
 function hitWitchOrWolf(){
-    getRandomNumber(hitOrMiss)
 
     switch (input.value.toLowerCase()){
         case 'häxan':
             hitTheWitch()
             break
         
-        case 'vargen' && !stick:
-            if (hitOrMiss >= 1){
-                wolfHP = wolfHP - userStrength
-                text.innerHTML += '<p>Du träffade! <br> Vargen: "Ouch! Djurmisshandlare! "</p>'
-
-                if(wolfHP === 0){
-                    text.innerHTML += '<p> Vargen: "Jag vill inte dö nu! Jag som alltid drömt om att få leka apport inna jag dör". <br>' + 
-                    'Vargen faller ihop död på marken utan sin livsdröm uppfylld </p>'
-                }
-            }
-
-            else{
-                text.innerHTML += '<p> Du tvekar inför att slå ett så fluffigt djur. I din tvekan lyckas vargen undvika sitt slag </p>'
-            }
-            
+        case 'vargen' && !stickThrown:
+            hitTheWolf()
             break
 
         default:
@@ -270,6 +278,8 @@ function hitWitchOrWolf(){
 
 function hitTheWitch(){
 
+    getRandomNumber(hitOrMiss)
+
     if (hitOrMiss >= 1){
         witchHP = witchHP - userStrength
         text.innerHTML += '<p> Du träffade! <br> "AJ, förgrymmade unge!"</p>'
@@ -284,13 +294,28 @@ function hitTheWitch(){
     }
 }
 
-function sneakCloser(){
-    text.innerHTML += '<p> Sneak closer </p>'
-}
+function hitTheWolf(){
 
-function sneakAway(){
-    text.innerHTML += '<p> Sneak away </p>'
+    getRandomNumber(hitOrMiss)
+
+    if (hitOrMiss >= 1){
+        wolfHP = wolfHP - userStrength
+        text.innerHTML += '<p>Du träffade! <br> Vargen: "Ouch! Djurmisshandlare! "</p>'
+
+        if(wolfHP === 0){
+            text.innerHTML += '<p> Vargen: "Jag vill inte dö nu! Jag som alltid drömt om att få leka apport inna jag dör". <br>' + 
+            'Vargen faller ihop död på marken utan sin livsdröm uppfylld </p>'
+        }
+    }
+
+    else{
+        text.innerHTML += '<p> Du tvekar inför att slå ett så fluffigt djur. I din tvekan lyckas vargen undvika sitt slag </p>'
+    }
+
 }
+/**
+ *  The function that helps identify who will hit you the current round
+ */
 
 function wolfAndWitchHitsBack(){
     if(wolf && witch){
@@ -298,7 +323,7 @@ function wolfAndWitchHitsBack(){
         hitByWolf()
     }
 
-    else if(witch && stick){
+    else if(witch && stickThrown){
         hitByWitch()
         text.innerHTML += '<p> Vargen är iväg och hämtar pinnen du kastade. </p>'
     }
@@ -313,8 +338,12 @@ function wolfAndWitchHitsBack(){
         hitByWitch()
     }
 
-    chooseAction()
+    fightTheWitch()
 }
+
+/**
+ * Determies if the witch is successful in hitting user
+ */
 
 function hitByWitch(){
 
@@ -329,8 +358,11 @@ function hitByWitch(){
         text.innerHTML += '<p> Du lyckas rulla undan som en riktig Ninja. Häxan skriker i frustration: <br> "Djävulens avkomma!" </p>'
     }
 
-    fightTheWitch()
 }
+
+/**
+ * Determines if the wolf is successful in hitting user
+ */
 
 function hitByWolf(){
 
@@ -345,7 +377,43 @@ function hitByWolf(){
         text.innerHTML += '<p> Du lyckas ducka undan när hans stora fluffiga tass kommer farande. Vargen gnyr ledsamt: <br> "Typiska människor ' + 
         'med sin dubbelmoral. Ni vill klappa oss, men om vi vill klappa till er så får vi inte det " </p>'
     }
-
-    fightTheWitch()
 }
+
+/**
+ * This function helps to manage your basket inventory
+ */
+
+function checkBasket(){
+    text.innerHTML += '<p> I din korg har du: ' + basket + '. </p>'
+
+    button.onclick = chooseBasketItem
+    
+    function chooseBasketItem(){
+
+        useBasketItem(input.value)
+
+        if (chosenItem == 'svamp' && svamp && wolf && witch){
+            text.html += '<p> Vem ska få svampen? <br> - Häxan <br> - Vargen</p>'
+
+                
+        }
+
+        else if(chosenItem == 'pinne' && pinne)
+
+        else if(chosenItem == 'pinne' && pinne && wolf){
+            text.innerHTML += '<p> Du kastar pinnen. Vargen blir helt lyrisk och springer efter pinnen med stor entusiasm </p>'
+        }
+
+    }
+}
+
+
+function sneakCloser(){
+    text.innerHTML += '<p> Sneak closer </p>'
+}
+
+function sneakAway(){
+    text.innerHTML += '<p> Sneak away </p>'
+}
+
 
