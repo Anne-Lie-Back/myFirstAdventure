@@ -27,6 +27,7 @@ let breadCrumbs = 5
 
 let mushroom = false
 let wolf = true
+
 let stick = false
 
 
@@ -160,6 +161,7 @@ function event4(){
             case 's':
             case 'S':
                 text.innerHTML += '<p> Du bestämmer dig för att allt fluffigt går att lita på och berättar sanningen: <br> "Hon bor i andra sidan skogen, om du tar höger vid stigen" </p>'
+                wolf = false
 
                 seeBreadCrumb(event5)
                 break
@@ -167,8 +169,7 @@ function event4(){
             case 'f':
             case 'F':
                 text.innerHTML += '<p> Du bestämmer dig för att även om vargen är söt och fluffig så är han en främling. För att dämpa skadan som redan är skedd så bestämmer du dig för att dra en vit lögn. Skriv en lögn att lura vargen med: </p>'
-                wolf = false
-                
+                              
                 button.onclick = tellLie
                 break
             

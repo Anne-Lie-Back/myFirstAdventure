@@ -56,7 +56,7 @@ function capturePikachu(){
     let chanceToCatch = getRandomNumber()
     
 
-    if ( chanceToCatch >= 4){
+    if ( chanceToCatch >= 3){
         
         healthPoints = healthPoints - 1
         text.innerHTML += ' <p> Grattis! Du har just fångat din första Pokémon </p> <br>' + storyBeforeStickEventHappy
