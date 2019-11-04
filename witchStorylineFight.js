@@ -5,19 +5,19 @@
 function fightTheWitch(){
 
     if (witch && wolf && !stickThrown){
-        text.innerHTML += '<p> Häxan: "Det är ingen idé att kämpa emot. Min craving för barnpaj är för stor. Ge upp nu så lovar jag att du får välja' + 
+        text.innerHTML += '<p> <br><br> Häxan: "Det är ingen idé att kämpa emot. Min craving för barnpaj är för stor. Ge upp nu så lovar jag att du får välja' + 
                             ' kryddning!" <br> Vargen: "Ja, ge upp ' + userName + ' så jag får välja kryddning! </p>'
         chooseAction()
     }
 
     else if(!witch && wolf && !stickThrown){
-        text.innerHTML += '<p> Vargen: "Du dödade min kompis! Nu ska du allt få!" </p>'
+        text.innerHTML += '<p> <br> <br> Vargen: "Du dödade min kompis! Nu ska du allt få!" </p>'
         wolfStrength = 6
         chooseAction()
     }
 
     else if(witchHP <= 0 && wolfHP <= 0){
-        text.innerHTML += '<p> Häxan och Vargen är död. <br> Phew, det var en ansträngande fight tänker du och vänder på klacken för att gå mot mormors. ' + 
+        text.innerHTML += '<p> <br> <br> Häxan och Vargen är död. <br> Phew, det var en ansträngande fight tänker du och vänder på klacken för att gå mot mormors. ' + 
         ' Men innan du går bryter du av ett stort hörn av pepparkakshusets tak... som färdkost.</p>'
 
         wolfAtGrandma = false
@@ -25,20 +25,20 @@ function fightTheWitch(){
     }
 
     else if(witchHP <= 0 && stickThrown){
-        text.innerHTML += '<p> Häxan är död. Vargen jagar sina drömmar symboliserade i en pinne. Du bestämmer dig för att nu är det läge att gå till mormors stuga. Du är redan försenad dit.</p>'
+        text.innerHTML += '<p> <br> <br> Häxan är död. Vargen jagar sina drömmar symboliserade i en pinne. Du bestämmer dig för att nu är det läge att gå till mormors stuga. Du är redan försenad dit.</p>'
         
         wolfAtGrandma = false
         goToGrandma()
     }
 
     else if(witchHP <= 0 && !wolf ){
-        text.innerHTML += '<p> Häxan är död. <br> Phew, det var en ansträngande fight tänker du och vänder på klacken för att gå mot mormors. ' + 
+        text.innerHTML += '<p> <br> <br> Häxan är död. <br> Phew, det var en ansträngande fight tänker du och vänder på klacken för att gå mot mormors. ' + 
         ' Men innan du går bryter du av ett stort hörn av pepparkakshusets tak... som färdkost.</p>'
         goToGrandma()
     }
     
     else{
-        text.innerHTML += '<p> "Det är ingen idé att kämpa emot. Min craving för barnpaj är för stor. Ge upp nu så lovar jag att du får välja kryddning!" </p>'
+        text.innerHTML += '<p> <br> <br> "Det är ingen idé att kämpa emot. Min craving för barnpaj är för stor. Ge upp nu så lovar jag att du får välja kryddning!" </p>'
         chooseAction()
     }
 
@@ -48,7 +48,7 @@ function fightTheWitch(){
  * Lets the user choose action and which function that will be invoked
  */
 function chooseAction(){
-    text.innerHTML += '<p> Vad vill du göra? <br> - Slå <br> - Ge upp <br> - Korgen </p>'
+    text.innerHTML += '<p><br> Vad vill du göra? <br> - Slå <br> - Ge upp <br> - Korgen </p>'
     button.onclick = chosenAction
 
     function chosenAction(){
@@ -186,8 +186,8 @@ function fightingPikachu(){
 
         if(witchOrWolf >= 2){
             wolfHP = wolfHP - 2
-            text.innerHTML += '"Blixtra vargen Pikachu!" ropar du med hög myndig stämma. <br> "PiiiiiiiiiiiiiiiKAAAAAAAAAA!" <br>' + 
-            ' Vargen gnyr ledsamt. Det luktar lite bränt'
+            text.innerHTML += '<p><br> "Blixtra vargen Pikachu!" ropar du med hög myndig stämma. <br> "PiiiiiiiiiiiiiiiKAAAAAAAAAA!" <br>' + 
+            ' Vargen gnyr ledsamt. Det luktar lite bränt </p>'
 
             console.log(wolfHP)
 
@@ -201,8 +201,8 @@ function fightingPikachu(){
 
         else{
             witchHP = witchHP - 2
-            text.innerHTML += '"Blixtra häxan Pikachu!" ropar du med hög myndig stämma. <br> "Piiiiika CHUUUUUUUUUUUUUU!" <br>' + 
-            ' Häxan skriker högt- Hennes hår ser ännu vildare ut nu. Det luktar lite bränt'
+            text.innerHTML += '<p><br> "Blixtra häxan Pikachu!" ropar du med hög myndig stämma. <br> "Piiiiika CHUUUUUUUUUUUUUU!" <br>' + 
+            ' Häxan skriker högt- Hennes hår ser ännu vildare ut nu. Det luktar lite bränt </p>'
             console.log(witchHP)
     
             if(witchHP <= 0){
@@ -215,12 +215,12 @@ function fightingPikachu(){
     else if(!witch && wolf && !stickThrown){
 
         wolfHP = wolfHP - 2
-        text.innerHTML += '"Blixtra vargen Pikachu!" ropar du med hög myndig stämma. <br> "PiiiiiiiiiiiiiiiKAAAAAAAAAA!" <br>' + 
-        ' Vargen gnyr ledsamt. Det luktar lite bränt'
+        text.innerHTML += '<p><br> "Blixtra vargen Pikachu!" ropar du med hög myndig stämma. <br> "PiiiiiiiiiiiiiiiKAAAAAAAAAA!" <br>' + 
+        ' Vargen gnyr ledsamt. Det luktar lite bränt </p>'
 
         if(wolfHP === 0){
             text.innerHTML += '<p> Vargen: "Jag vill inte dö nu! Jag som alltid drömt om att få leka apport inna jag dör". <br>' + 
-            'Vargen faller ihop död på marken utan sin livsdröm uppfylld </p>'
+            ' Vargen faller ihop död på marken utan sin livsdröm uppfylld </p>'
             
             wolf = false
         }
@@ -230,8 +230,8 @@ function fightingPikachu(){
     else if ((witch && !wolf) || (witch && stickThrown && wolf)){
 
         witchHP = witchHP - 2
-        text.innerHTML += '"Blixtra häxan Pikachu!" ropar du med hög myndig stämma. <br> "Piiiiika CHUUUUUUUUUUUUUU!" <br>' + 
-        ' Häxan skriker högt- Hennes hår ser ännu vildare ut nu. Det luktar lite bränt'
+        text.innerHTML += '<p><br> "Blixtra häxan Pikachu!" ropar du med hög myndig stämma. <br> "Piiiiika CHUUUUUUUUUUUUUU!" <br>' + 
+        ' Häxan skriker högt- Hennes hår ser ännu vildare ut nu. Det luktar lite bränt </p>'
 
         if(witchHP <= 0){
             text.innerHTML += '<p> "Åh nej! Jag dör! JAG HATAR BARN" </p>'
@@ -263,7 +263,7 @@ function wolfAndWitchHitsBack(){
 
     else if( wolf && !witch && !stickThrown){
 
-        text.innerHTML += '<p> Vargen: "Du dödade häxan din lille skit! Hon som skulle bjuda mig på mat!"</p>'
+        text.innerHTML += '<p><br> Vargen: "Du dödade häxan din lille skit! Hon som skulle bjuda mig på mat!"</p>'
         hitByWolf()
     }
 
@@ -295,7 +295,7 @@ function hitByWitch(){
         let hitOrMiss = getRandomNumber()
         if (hitOrMiss >= 1){
             healthPoints = healthPoints - witchStrength
-            text.innerHTML += '<p> Häxan träffar dig med ett slag. <br> "Mwehehehe, snart blir det barnpaj till middag!" <br> Du har nu ' + healthPoints +
+            text.innerHTML += '<p><br> Häxan träffar dig med ett slag. <br> "Mwehehehe, snart blir det barnpaj till middag!" <br> Du har nu ' + healthPoints +
             'HP kvar </p>'
 
             if(healthPoints <= 0){
@@ -304,7 +304,7 @@ function hitByWitch(){
         }
 
         else{
-            text.innerHTML += '<p> Du lyckas rulla undan som en riktig Ninja. Häxan skriker i frustration: <br> "Djävulens avkomma!" </p>'
+            text.innerHTML += '<p><br> Du lyckas rulla undan som en riktig ninja. Häxan skriker i frustration: <br> "Djävulens avkomma!" </p>'
         }
     }
 
@@ -321,7 +321,7 @@ function hitByWolf(){
         let hitOrMiss = getRandomNumber()
         if (hitOrMiss >= 1){
             healthPoints = healthPoints - wolfStrength
-            text.innerHTML += '<p> Vargen träffar dig med sina vassa klor. <br> "Snart ska jag äta upp dig!" <br> Du har nu ' + healthPoints +
+            text.innerHTML += '<p> <br> Vargen träffar dig med sina vassa klor. <br> "Snart ska jag äta upp dig!" <br> Du har nu ' + healthPoints +
             'HP kvar </p>'
 
             if(healthPoints <= 0){
@@ -330,7 +330,7 @@ function hitByWolf(){
         }
 
         else{
-            text.innerHTML += '<p> Du lyckas ducka undan när vargens stora fluffiga tass kommer farande. Vargen gnyr ledsamt: <br> "Typiska människor ' + 
+            text.innerHTML += '<p><br> Du lyckas ducka undan när vargens stora fluffiga tass kommer farande. Vargen gnyr ledsamt: <br> "Typiska människor ' + 
             'med sin dubbelmoral. Ni vill klappa oss, men om vi vill klappa till er så får vi inte det " </p>'
         }
     }
@@ -342,7 +342,7 @@ function hitByWolf(){
  */
 
 function checkBasket(){
-    text.innerHTML += '<p> I din korg har du: ' + basket + '. Eller vill du backa?</p>'
+    text.innerHTML += '<p> I din korg har du: ' + basket + '. Eller vill du backa? </p>'
 
     button.onclick = chooseBasketItem
 

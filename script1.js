@@ -51,8 +51,8 @@ function event2(){
 
     text.innerHTML += '<p>"Tror du verkligen att hon dricker ' + drink + '? Jaja, hon dricker säkert det mesta. <br>' +
                         userName + ' med ett HP på ' + healthPoints + ' ger sig ut i skogen med en korg med ' + food + ' och ' 
-                        + drink + '. Målet är: mormors stuga!' + 
-                         '<br> <br> Du traskar ut i den gröna, frodiga skogen. Fåglar kvittrar och solens strålar som silar genom trädkronorna och skapar skuggspel över stigen.'
+                        + drink + '. Målet är: mormors stuga! </p>' + 
+                         '<p><br> Du traskar ut i den gröna, frodiga skogen. Fåglar kvittrar och solens strålar som silar genom trädkronorna och skapar skuggspel över stigen.'
                          ' <br> Du ser en ensam liten brödsmula ligga på stigen </p>'
 
     seeBreadCrumb(event3)
@@ -65,7 +65,7 @@ function event2(){
 
 function event3(){
 
-    text.innerHTML += '<p> Skogen bjuder på många spännande dofter, men inget doftar så gott som din mormors kanelbullar. Du börjar fantisera ' +
+    text.innerHTML += '<p> <br> Skogen bjuder på många spännande dofter, men inget doftar så gott som din mormors kanelbullar. Du börjar fantisera ' +
                         'om alla de kanelbullar du hoppas få äta när du kommer fram till mormors stuga. Bredvid ett träd precis vid stigen ser ' + 
                         'du en svamp. Mormor gillar svamp. Plocka upp den? (J/N)</p>'
     
@@ -131,9 +131,9 @@ function event3(){
 function event4(){
     
     text.innerHTML += '<p><br> Skogen bjuder på många spännande ljud. Fåglar som kvittrar, vinden som viner genom trädtopparna, en buske som prasslar medan en varg stiger ut ur den... ... ... <br> EN BUSKE SOM PRASSLAR MEDAN EN VARG STIGER UR DEN?!' +
-    '<br> Vargen synar dig från top till tå, sedan öppnar han sitt tandprydda gap och börjar tala med sin hesa whiskeyröst <br> "Nämen hej kompis. Vad heter du?"' + 
+    '<br> Vargen synar dig från top till tå, sedan öppnar han sitt tandprydda gap och börjar tala med sin hesa whiskeyröst <br> Vargen: "Nämen hej kompis. Vad heter du?"' + 
     '<br> Din mamma har alltid sagt till dig att du inte ska prata med främmande människor, men hon sa inget om djur. <br> "Jag heter ' + userName + 
-    '" <br> "MMMMjjjahajahaja...du ' + userName + ', vad är det du har i korgen?" <br> Du tittar ner i din korg och räknar upp innehållet: "' +
+    '" <br> Vargen: "MMMMjjjahajahaja...du ' + userName + ', vad är det du har i korgen?" <br> Du tittar ner i din korg och räknar upp innehållet: <br> "' +
     basket + '" <br> "MMmmmåhååå, kan man få smaka något? <br> "Nej, maten jag har i min korg ska jag ge till mormor" <br> Vargen tittar på dig med surmulen blick.' +
     'Du börjar bli osäker, var det främmande människor eller främlingar överhuvudtaget man inte skulle prata med? Ska du berätta vad mormor bor (Sanningen) eller ska du ljuga för vargen? (Ljuga) </p>'
      
@@ -146,7 +146,8 @@ function event4(){
 
         switch(input.value.toLowerCase()){
             case 'sanningen':
-                text.innerHTML += '<p> Du bestämmer dig för att allt fluffigt går att lita på och berättar sanningen: <br> "Hon bor i andra sidan skogen, om du tar höger vid stigen" </p>'
+                text.innerHTML += '<p> Du bestämmer dig för att allt fluffigt går att lita på och berättar sanningen: <br> "Hon bor i andra sidan skogen, om du tar höger vid stigen" </p>' + 
+                                '<br> Vargen: "Oj, då har du en bit att gå. Bäst att låta dig traska vidare. Farväl ' + userName + '!" <br> Ditt äventyr fortsätter. På stigen ser du en brödsmula.'
                 
                 wolf = false
                 wolfAtGrandma = true
@@ -183,7 +184,7 @@ function event4(){
  * Reveals the Pikachu and starts the Pikachu event in pokemonFight.js
  */
 function event5(){
-    text.innerHTML += '<p><br> EN VILD PIKACHU UPPENBARAR SIG! <br> Vad vill du göra: fånga, mata eller fly?</p>'
+    text.innerHTML += '<p><br> EN VILD PIKACHU UPPENBARAR SIG! <br> Vad vill du göra: <br> - Fånga <br>- Mata <br> -Fly</p>'
 
     button.onclick = pikachuEvent
 }
@@ -219,7 +220,7 @@ function event6(){
  * The user is asked to input if user would like to follow breadcrumbs to the left or go to grandma to the right
  */
 function event7(){
-    text.innerHTML += '<p> Du kommer fram till ett vägskäl. Stigen delar sig som ett Y framför dig. Till höger ser du en mörk,' + 
+    text.innerHTML += '<p> <br> Du kommer fram till ett vägskäl. Stigen delar sig som ett Y framför dig. Till höger ser du en mörk,' + 
     ' lummig väg som du vet leder till mormor. På stigen till vänster skiner solen och du ser du ett spår av brödsmulor som leder djupare in. ' + 
     '<br> Väljer du att gå höger eller vänster?</p>'
 
@@ -309,10 +310,9 @@ function talkToHunter(){
  * Handles which ending should be played depending on earlier choices by user.
  */
 function atGrandma(){
-    text.innerHTML += 'Fem minuter är du framme hos mormor. Du knackar på med bestämda slag'
+    text.innerHTML += '<p> <br> Fem minuter är du framme hos mormor. Du knackar på med bestämda slag </p>'
 
     if((wolfAtGrandma && !hunter)||(wolfAtGrandma && hunter)){
-        console.log('Jägarn kommer')
         wolfEnding()
     }
 

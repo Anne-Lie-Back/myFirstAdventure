@@ -9,7 +9,7 @@
  */
 function seeBreadCrumb(nextEvent){
 
-    text.innerHTML += ' Plocka upp brödsmulan? (J/N)'
+    text.innerHTML += ' <br> Plocka upp brödsmulan? (J/N)'
 
     button.onclick = pickBreadCrumb
 
@@ -30,7 +30,6 @@ function seeBreadCrumb(nextEvent){
              * Handles user-input if user wanted to do a pushup and the gain of strength if user chose 'J'
              */
             function doPushUp(){
-                console.log('Gör en armhävning')
 
                 switch(input.value.toLowerCase()){
 

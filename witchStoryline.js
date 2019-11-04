@@ -8,7 +8,7 @@
  * Takes the user further down the path to the left and invites to a series of breadcrumb-functions
  */
 function goToTheWitch(){
-    text.innerHTML += '<p> Du följer spåret av brödsmulor. Vad kommer finnas vid dess ände? Hur kommer det sig att dessa brödsmulor leder dit? ' + 
+    text.innerHTML += '<p><br> Du följer spåret av brödsmulor. Vad kommer finnas vid dess ände? Hur kommer det sig att dessa brödsmulor leder dit? ' + 
                         ' Är det en bagare som burit en stor korg med bröd? Eller kanske en jättestor hungrig mus som smulat på vägen? Vem vet? ' +
                         ' Inte du iallafall, eftersom du nyfiket följer spåret av brödsmulor. <br> Du funderar på om du vill plocka upp och äta en brödsmula. </p>'    
 
@@ -33,7 +33,7 @@ function noticeLastBreadCrumb(){
 function approachTheGingerbreadHouse(){
 
     console.log(breadCrumbs)
-    text.innerHTML += '<p> Du börjar se slutet av stigen och skymtar en stor äng. På denna stora äng står det en stor stuga gjord av....pepparkaka? <br>' + 
+    text.innerHTML += '<p> <br> Du börjar se slutet av stigen och skymtar en stor äng. På denna stora äng står det en stor stuga gjord av....pepparkaka? <br>' + 
     ' <br> Du smyger långsamt fram till skogskanten. Kan det vara sant? Ett hus gjort av pepparkaka? <br> WOW, det kan vara bland det coolaste du sett ' + 
     'i hela ditt liv. Du blir himla nyfiken på vem som bor i ett sådant hus, men vågar du gå närmare? Vad gör du: <br> - Knackar på <br> - Smyger närmare <br> - Går därifrån? </p>'
 
@@ -185,7 +185,7 @@ function knockOnDoor(){
  * If user chose to sneak closer this function will play out the events that leads to THE BIG FIGHT! (at witchStorylineFight.js)
  */
 function sneakCloser(){
-    text.innerHTML += '<p> Du smyger fram och kikar in genom fönstret. Där ser du en gammal dam som tillagar något. Hon plockar fram en köttkniv ' + 
+    text.innerHTML += '<p><br> Du smyger fram och kikar in genom fönstret. Där ser du en gammal dam som tillagar något. Hon plockar fram en köttkniv ' + 
     'och böjer sig ner. Du funderar över vad det är hon ska använda kniven till, tills du ser att hon slänger upp ett oroveckande stycke kött. ' + 
     ' Är det...ett stycke barnkropp? <br> Fylld av fasa försöker du smyga iväg igen, men självklart lyckas du snubbla på en kruka med klubbor som stod'+ 
     'framför häxans fönster. <br> Du hör hur häxan klampar mot dörren, slår upp den och utbrister: "Kom hit din skit så jag kan äta upp"</p>'

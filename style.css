@@ -58,7 +58,7 @@ body{
 .theEnd{
     color:black;
     font-weight: bolder;
-    font-size: 3rem;
+    font-size: 3rem 0;
     padding: 0 0 2rem 0;
     text-align:center;
 }

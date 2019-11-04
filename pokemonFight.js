@@ -22,7 +22,7 @@ function pikachuEvent(){
             break
 
         case 'fly':
-            text.innerHTML += 'Ingen minns en fegis, men en fegis får iallafall leva längre.' + storyBeforeStickEventSad
+            text.innerHTML += '<p> Ingen minns en fegis, men en fegis får iallafall leva längre. </p>' + storyBeforeStickEventSad
 
             button.onclick = event6
             break
@@ -57,20 +57,20 @@ function capturePikachu(){
 
     else{
         
-        text.innerHTML += '<p> Oh no! Pikachu lyckades rulla undan!'
+        text.innerHTML += '<p> Oh no! Pikachu lyckades rulla undan!</p>'
         console.log(chanceToCatch)
         
         
             if (pikachuFed == false){
 
                 healthPoints = healthPoints - 3
-                text.innerHTML += 'Dessutom hoppar den fram och biter dig i fingret.'
+                text.innerHTML += '<p> Dessutom hoppar den fram och biter dig i fingret. </p>'
                 
                     if(healthPoints <= 0){
                         youDied()
                     }
                     else{
-                        text.innerHTML += '<br> "AJ" (Du har nu ' + healthPoints + ' HP) <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>'
+                        text.innerHTML += '<p> "AJ" (Du har nu ' + healthPoints + ' HP) <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>'
                         console.log(healthPoints)
                     }
                 
