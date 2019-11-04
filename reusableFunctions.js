@@ -116,7 +116,7 @@ function youDied(){
      * Function for choosing if you want to play again or not. Empties text-field
      */
     function startOver(){
-        switch (input.value) {
+        switch (input.value.toLowerCase()) {
             case 'j':
                 text.innerHTML = 'En solig dag i augusti vaknar du av att din mamma ropar på dig. (Skriv ditt namn)'
                 button.onclick = initialInput
@@ -128,6 +128,7 @@ function youDied(){
 
             default:
                 text.innerHTML = wrongInput
+                button.onclick = startOver
         }
     }
 }
