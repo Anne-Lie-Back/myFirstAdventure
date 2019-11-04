@@ -17,12 +17,14 @@ function fightTheWitch(){
         text.innerHTML += '<p> Häxan och Vargen är död. <br> Phew, det var en ansträngande fight tänker du och vänder på klacken för att gå mot mormors. ' + 
         ' Men innan du går bryter du av ett stort hörn av pepparkakshusets tak... som färdkost.</p>'
 
+        wolfAtGrandma = false
         goToGrandma()
     }
 
     else if(witchHP <= 0 && stickThrown){
         text.innerHTML += '<p> Häxan är död. Vargen jagar sina drömmar symboliserade i en pinne. Du bestämmer dig för att nu är det läge att gå till mormors stuga. Du är redan försenad dit.</p>'
         
+        wolfAtGrandma = false
         goToGrandma()
     }
 
@@ -325,7 +327,7 @@ function hitByWolf(){
  */
 
 function checkBasket(){
-    text.innerHTML += '<p> I din korg har du: ' + basket + '. </p>'
+    text.innerHTML += '<p> I din korg har du: ' + basket + '. Eller vill du backa?</p>'
 
     button.onclick = chooseBasketItem
     
@@ -394,6 +396,10 @@ function checkBasket(){
             text.innerHTML += "Ditt HP återställs"
             healthPoints = 20
             wolfAndWitchHitsBack()
+        }
+        
+        else if(input.value.toLowerCase() === 'backa'){
+            chooseAction()
         }
         else{
             text.innerHTML += wrongInput

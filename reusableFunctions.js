@@ -64,3 +64,7 @@ function youDied(){
         }
     }
 }
+
+function theEnd(){
+    text.InnerHTML += '<p class="theEnd"> THE END </p>'
+}

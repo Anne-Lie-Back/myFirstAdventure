@@ -32,6 +32,8 @@ let drink
 
 let mushroom = false
 let wolf = true
+let wolfAtGrandma = false
+let hunter = false
 
 let stick = false
 
@@ -169,6 +171,7 @@ function event4(){
             case 'S':
                 text.innerHTML += '<p> Du bestämmer dig för att allt fluffigt går att lita på och berättar sanningen: <br> "Hon bor i andra sidan skogen, om du tar höger vid stigen" </p>'
                 wolf = false
+                wolfAtGrandma = true
 
                 seeBreadCrumb(event5)
                 break
@@ -264,5 +267,112 @@ function event7(){
 
 
 function goToGrandma(){
-    text.innerHTML += 'MORMOR'
+    text.innerHTML += '<p> <br> "Det är långt till mormor, men så småningom börjar du skymta slutet av stigen och den lilla röda stugan" </p>'
+
+    if(wolfAtGrandma){
+        talkToHunter()
+    }
+
+    text.innerHTML += 'Fem minuter är du framme hos mormor. Du knackar på med bestämda slag'
+
+    if((wolfAtGrandma && !hunter)||(wolfAtGrandma && hunter)){
+        wolfEnding()
+    }
+
+    else{
+        grandmaEnding()
+    }
+}
+
+function wolfEnding(){
+    text.innerHTML += '<p> Dörren öppnas. Där står din mormor...fast...hon ser lite annorlunda ut, mjukare ut. Ställ en fråga till mormor: </p>'
+    button.onclick = askFirstQuestion
+
+    function askFirstQuestion(){
+        text.innerHTML += input.value + ' <p> Mormor svarar: "Ingen kommentar" <br> Du känner fortfarande på dig att något är lurt. Ställ en fråga till: </p>'
+        button.onclick = askSecondQuestion
+
+        function askSecondQuestion(){
+            text.innerHTML += input.value + '<p> Mormor: "OKEJ, okej okej okej. Jag är inte din mormor. Jag är vargen...och jag har ätit upp din mormor. ' + 
+                            'Du ser, jag kunde inte stå emot min hunger när du pratade om ' + food + ' och ' + drink + ' och jag ville inte äta upp dig '+ 
+                            ' så jag tänkte vara schysst och äta upp din mormor istället.'
+            
+            if(hunter){
+                wolfHunterEnding()
+            }
+
+            else{
+                text.innerHTML += '<p><br> Du och vargen sitter runt det lilla bordet inne i mormors stuga. En pinsam tystnad råder.</p>'
+
+                if(mushroom){
+                    text.innerHTML += '<p> Vill du erbjuda honom svampen du har i korgen? (J/N)'
+                    button.onclick = offerMushroom
+
+                        function offerMushroom(){
+                            switch(input.value.toLowerCase()){
+
+                                case 'j':
+                                text.innerHTML += '<p> Du kikar upp på vargen som fingrar med sina klor på sin kaffekopp och frågar: ' + 
+                                                '<br> "Du skulle inte vilja ha lite svamp?" <br> "Nej tack, jag gillar inte svampar." svarade vargen.' + 
+                                                '<br> "OK" </p>'
+                                break
+
+                                case 'n':
+                                    text.innerHTML += '<p> Aldrig i din vildaste fantasi skulle du ens komma på tanken att ge honom en svamp som du visste var giftig,' +
+                                                        ' inte ens en varg som äter mormorsar förtjänar svampdöden. Du vänder dig mot vargen och frågar: <br> ' + 
+                                                        '"Nu när du ätit upp min mormor...kan du bli min nya mormor?" <br> Vargen log brett och sa: "självklart ' +
+                                                        userName + '.'
+                                break
+
+                                default:
+                                    text.innerHTML += wrongInput
+                                    button.onclick = offerMushroom
+                            }
+                        }
+                    
+                }
+            }
+
+        }
+    }
+}
+
+function wolfHunterEnding(){
+
+}
+
+function grandmaEnding(){
+
+}
+
+function talkToHunter(){
+    text.innerHTML += '<p> <br> En lång och mörk gubbe ställer sig framför dig på stigen. På hans rygg hänger ett gevär. Han tittar med skarp ' + 
+                        'blick rakt in i dina ögon.<br> Jägaren: "Hej skogsvandrare. Du har möjligtvis inte sett en fluffig varg springa runt ' + 
+                        'i krokarna?" <br> <br> Du vet inte riktigt vad du ska svara för även om du tycker vargar är lite otäcka så tycker du ' + 
+                        'att jägaren är ännu otäckare. Berättar du: <br> - Sanning <br> - Lögn  </p>'
+
+                        button.onclick = tellTrutchOrLieHunter
+
+                        function tellTrutchOrLieHunter(){
+
+                            switch(input.value.toLowerCase()){
+
+                                case 'sanning':
+                                   hunter = true
+                                    text.innerHTML += '<p>"Ja, jag mötte en varg förut. Jag berättade för honom att min mormor bor på denna '+ 
+                                                        'stigen lite längre fram"'
+                                    break
+                                
+                                case 'lögn':
+                                    text.innerHTML += '<p>"Näe, jag kan inte minnas att jag sett någon varg. Särskilt inte någon fluffig sådan som ' +
+                                                     'undrar var mormoar bor.</p>'
+                                    break
+                                
+                                default:
+                                    text.innerHTML += wrongInput
+                                    button.onclick = tellTrutchOrLieHunter
+                            }
+                        }
+
+                        text.innerHTML += '<p> Jägaren: "Jag förstår, tack för informationen. Trevlig vandring!" </p>'
 }

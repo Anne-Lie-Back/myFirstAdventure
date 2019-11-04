@@ -33,7 +33,7 @@ function pikachuEvent(){
             
             case 'mata':
                     console.log('mata')
-                    text.innerHTML += '<p> I din korg har du: ' + basket + '. Vad vill du ge Pikachu? </p>'
+                    text.innerHTML += '<p> I din korg har du: ' + basket + '. Vad vill du ge Pikachu? Eller ångra? </p>'
                     
                     button.onclick = feedPikachu
                 break
@@ -114,6 +114,11 @@ function feedPikachu(){
         text.innerHTML += '<p>"Pika pikaaaa~" kurrar pikachu och ser nöjd ut. <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>' 
     )
 
+    else if(input.value.toLowerCase() === 'ångra'){
+        text.innerHTML += '<p> Vad vill du göra: fånga, mata eller fly?</p>'
+
+        button.onclick = pikachuEvent
+    }
     else{
         text.innerHTML += wrongInput
         button.onclick = feedPikachu
