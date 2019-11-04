@@ -1,19 +1,24 @@
 
 /**
- * The breadcrumb-function that's a reusable loop of functions to use everytime the user sees a breadcrumb
+ * The breadcrumb-events is a series of functions that's reusable fot everytime the user sees a breadcrumb
  * 
- * NEED TO FIX ISSUE WITH PROGRAM LOSING PACE AFTER everything that's not wrong input.
  */
 
+/**
+ * Asks the user if user would like to pick up breadcrumb
+ */
 function seeBreadCrumb(nextEvent){
 
     text.innerHTML += ' Plocka upp brödsmulan? (J/N)'
 
     button.onclick = pickBreadCrumb
 
+    /**
+     * 
+     */
     function pickBreadCrumb(){ 
         
-        switch (input.value){
+        switch (input.value.toLowerCase()){
 
             case 'j':
             case 'J':

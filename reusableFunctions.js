@@ -19,9 +19,6 @@
  * @param {String} storyBeforeStickEventSad - a string to lead user on to the stick-function
  * @param {String} storyBeforeStickEventSad - a string to lead user on to the stick-function
  * @param {Number} strength - Your strength point
- * @param {String} text - The text shown for the user in DOM
- * @param {String} userInput - The text the user writes in the input-field
- * @param {String} userText - The text that shows the storys progress
  * @param {Number} witchHP - declares the amount of HP the witch has
  * @param {Number} witchStrength - declares the strength of the witch
  * @param {Boolean} witchAlive - tells if the witch is alive
@@ -35,12 +32,11 @@
 
 let basket = []
 let breadCrumbs = 5
-const button = document.getElementById("userButton")
+
 let drink
 let food
 let healthPoints = 20
 let hunter = false
-let input = document.getElementById("userInput")
 let itemIndex = -1
 let itemWasFound = false
 let mushroom = false
@@ -55,7 +51,7 @@ const storyBeforeStickEventHappy = ' Vilken härlig dag! Inte bara solen skiner,
 const storyBeforeStickEventSad = '<p> Med tungt hjärta promenerar du vidare, gråten nära till hands. Aldrig har något så skrämmande hänt dig förut.' + 
                                     'Men blicken djupt sjunken i marken framför dig så är det svårt att missa den pinne som ligger tvärs över vägen.' + 
                                     'Vill du plocka upp den? (J/N)</p>';
-let text = document.getElementById("userText")
+
 let userName
 let userStrength = 1
 let witch = true
