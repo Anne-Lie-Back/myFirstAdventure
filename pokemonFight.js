@@ -7,7 +7,7 @@
  */
 function pikachuEvent(){
     
-    switch(input.value){
+    switch(input.value.toLowerCase()){
 
         case 'fånga':
             console.log('fånga')
@@ -16,7 +16,7 @@ function pikachuEvent(){
         
         case 'mata':
                 console.log('mata')
-                text.innerHTML += '<p> I din korg har du: ' + basket + '. Vad vill du ge Pikachu? Eller ångra? </p>'
+                text.innerHTML += '<p> <br> I din korg har du: ' + basket + '. Vad vill du ge Pikachu? Eller ångra? </p>'
                 
                 button.onclick = feedPikachu
             break
@@ -47,7 +47,7 @@ function capturePikachu(){
     if ( chanceToCatch >= 4){
         
         healthPoints = healthPoints - 1
-        text.innerHTML += ' <p> Grattis! Du har just fångat din första Pokémon </p> <br>' + storyBeforeStickEventHappy
+        text.innerHTML += ' <p><br> Grattis! Du har just fångat din första Pokémon </p> <br>' + storyBeforeStickEventHappy
         basket.push('pokemon')
         pikachu = true
         console.log(healthPoints, chanceToCatch)
@@ -57,7 +57,7 @@ function capturePikachu(){
 
     else{
         
-        text.innerHTML += '<p> Oh no! Pikachu lyckades rulla undan!</p>'
+        text.innerHTML += '<p> <br> Oh no! Pikachu lyckades rulla undan!</p>'
         console.log(chanceToCatch)
         
         
@@ -70,7 +70,7 @@ function capturePikachu(){
                         youDied()
                     }
                     else{
-                        text.innerHTML += '<p> "AJ" (Du har nu ' + healthPoints + ' HP) <br> Vad gör du nu? <br> Fånga, mata eller fly?</p>'
+                        text.innerHTML += '<p> "AJ" (Du har nu ' + healthPoints + ' HP) <br><br> Vad gör du nu? <br> Fånga, mata eller fly?</p>'
                         console.log(healthPoints)
                     }
                 
@@ -108,7 +108,7 @@ function feedPikachu(){
     }
 
     else if(input.value.toLowerCase() === 'ångra'){
-        text.innerHTML += '<p> Vad vill du göra: fånga, mata eller fly?</p>'
+        text.innerHTML += '<p> <br> Vad vill du göra: fånga, mata eller fly?</p>'
 
         button.onclick = pikachuEvent
     }

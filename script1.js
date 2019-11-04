@@ -49,10 +49,10 @@ function event2(){
     drink = input.value.toLowerCase()
     basket.push(input.value)
 
-    text.innerHTML += '<p>"Tror du verkligen att hon dricker ' + drink + '? Jaja, hon dricker säkert det mesta. <br>' +
+    text.innerHTML += '<p>"Tror du verkligen att hon dricker ' + drink + '? Jaja, hon dricker säkert det mesta. <br> <br>' +
                         userName + ' med ett HP på ' + healthPoints + ' ger sig ut i skogen med en korg med ' + food + ' och ' 
                         + drink + '. Målet är: mormors stuga! </p>' + 
-                         '<p><br> Du traskar ut i den gröna, frodiga skogen. Fåglar kvittrar och solens strålar som silar genom trädkronorna och skapar skuggspel över stigen.'
+                         '<p><br> Du traskar ut i den gröna, frodiga skogen. Fåglar kvittrar och solens strålar som silar genom trädkronorna och skapar skuggspel över stigen.' + 
                          ' <br> Du ser en ensam liten brödsmula ligga på stigen </p>'
 
     seeBreadCrumb(event3)
@@ -130,12 +130,12 @@ function event3(){
 
 function event4(){
     
-    text.innerHTML += '<p><br> Skogen bjuder på många spännande ljud. Fåglar som kvittrar, vinden som viner genom trädtopparna, en buske som prasslar medan en varg stiger ut ur den... ... ... <br> EN BUSKE SOM PRASSLAR MEDAN EN VARG STIGER UR DEN?!' +
+    text.innerHTML += '<p><br> Skogen bjuder på många spännande ljud. Fåglar som kvittrar, vinden som viner genom trädtopparna, en buske som prasslar medan en varg stiger ut ur den... ... ... <br> EN VARG STIGER UR DEN?!' +
     '<br> Vargen synar dig från top till tå, sedan öppnar han sitt tandprydda gap och börjar tala med sin hesa whiskeyröst <br> Vargen: "Nämen hej kompis. Vad heter du?"' + 
     '<br> Din mamma har alltid sagt till dig att du inte ska prata med främmande människor, men hon sa inget om djur. <br> "Jag heter ' + userName + 
     '" <br> Vargen: "MMMMjjjahajahaja...du ' + userName + ', vad är det du har i korgen?" <br> Du tittar ner i din korg och räknar upp innehållet: <br> "' +
     basket + '" <br> "MMmmmåhååå, kan man få smaka något? <br> "Nej, maten jag har i min korg ska jag ge till mormor" <br> Vargen tittar på dig med surmulen blick.' +
-    'Du börjar bli osäker, var det främmande människor eller främlingar överhuvudtaget man inte skulle prata med? Ska du berätta vad mormor bor (Sanningen) eller ska du ljuga för vargen? (Ljuga) </p>'
+    ' Du börjar bli osäker, var det främmande människor eller främlingar överhuvudtaget man inte skulle prata med? Ska du berätta vad mormor bor (Sanningen) eller ska du ljuga för vargen? (Ljuga) </p>'
      
     button.onclick  = tellTruthOrLieWolf
 
@@ -172,8 +172,8 @@ function event4(){
      */
     function tellLieWolf(){
         
-        text.innerHTML += '<br> "'+ input.value + '" <br> "Oj, då har du en bit att gå. Bäst att låta dig traska vidare. Farväl ' + userName + 
-                            '!" <br> Ditt äventyr fortsätter. På stigen ser du en brödsmula.'
+        text.innerHTML += '<p> "'+ input.value + '" <br> "Oj, då har du en bit att gå. Bäst att låta dig traska vidare. Farväl ' + userName + 
+                            '!" <br> Ditt äventyr fortsätter. På stigen ser du en brödsmula.</p>'
         
         seeBreadCrumb(event5)
     }
@@ -184,7 +184,7 @@ function event4(){
  * Reveals the Pikachu and starts the Pikachu event in pokemonFight.js
  */
 function event5(){
-    text.innerHTML += '<p><br> EN VILD PIKACHU UPPENBARAR SIG! <br> Vad vill du göra: <br> - Fånga <br>- Mata <br> -Fly</p>'
+    text.innerHTML += '<p><br> EN VILD PIKACHU UPPENBARAR SIG! <br><br> Vad vill du göra: <br> - Fånga <br>- Mata <br> -Fly</p>'
 
     button.onclick = pikachuEvent
 }
@@ -221,7 +221,7 @@ function event6(){
  */
 function event7(){
     text.innerHTML += '<p> <br> Du kommer fram till ett vägskäl. Stigen delar sig som ett Y framför dig. Till höger ser du en mörk,' + 
-    ' lummig väg som du vet leder till mormor. På stigen till vänster skiner solen och du ser du ett spår av brödsmulor som leder djupare in. ' + 
+    ' lummig väg som du vet leder till mormor. På stigen till vänster skiner solen och du ser ett spår av brödsmulor som leder djupare in. ' + 
     '<br> Väljer du att gå höger eller vänster?</p>'
 
     button.onclick = choosePath

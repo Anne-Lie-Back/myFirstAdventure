@@ -9,7 +9,7 @@
  */
 function seeBreadCrumb(nextEvent){
 
-    text.innerHTML += ' <br> Plocka upp brödsmulan? (J/N)'
+    text.innerHTML += ' <p> Plocka upp brödsmulan? (J/N) </p>'
 
     button.onclick = pickBreadCrumb
 
@@ -22,7 +22,9 @@ function seeBreadCrumb(nextEvent){
 
             case 'j':
             breadCrumbs = breadCrumbs - 1
-            text.innerHTML += '<br> Du böjer dig ner och lockar upp brödsmulan i din hand. Du undersöker den noggrant, dammar av de fåtal gruskorn som satt på det, och slänger sedan in smulan i munnen. Medan du ändå är där nere så funderar du på om du ska göra en armhävning. <br> Gör du en armhävning? J/N' 
+            text.innerHTML += '<br> Du böjer dig ner och lockar upp brödsmulan i din hand. Du undersöker den noggrant, dammar av de fåtal ' +
+                            'gruskorn som satt på smulan, och slänger sedan in den i din mun. Medan du ändå är där nere så funderar du på om du ' + 
+                            'ska göra en armhävning. <br> Gör du en armhävning? J/N' 
             button.onclick = doPushUp
             break
 

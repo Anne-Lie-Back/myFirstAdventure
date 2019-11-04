@@ -44,7 +44,7 @@ let pikachuFed = false
 let pikachuFight = false
 let stick = false
 let stickThrown = false
-const storyBeforeStickEventHappy = ' <p><br> Vilken härlig dag! Inte bara solen skiner, utan du har också lyckats skaffa dig en gullig kompis. Nynnandes på en' + 
+const storyBeforeStickEventHappy = ' <p><br> Vilken härlig dag! Inte bara solen skiner, utan du har också lyckats skaffa dig en gullig kompis. Nynnandes på en ' + 
                                     'trevlig truddelutt och blicken höjd i en nöjd manér så missar du totalt pinnen som ligger utbredd över stigen. ' + 
                                     '<br> SCHMACK! (-1 HP) Det där gjorde ont tänkte du, vänder dig bakåt och ser pinnen som orsakade olyckan. Vill du plocka upp den? (J/N) </p>'
 const storyBeforeStickEventSad = '<p> <br> Med tungt hjärta promenerar du vidare, gråten nära till hands. Aldrig har något så skrämmande hänt dig förut.' + 
@@ -60,7 +60,7 @@ let wolf = true
 let wolfAtGrandma = false
 let wolfHP = 30
 let wolfStrength = 4
-let wrongInput = '<br> Det där är ingen korrekt input. Försök igen!'
+let wrongInput = '<br> Det där är ingen korrekt input. Försök igen! <br>'
 
 /**
  * --- BELOW YOU CAN FIND REUSED FUNCTIONS

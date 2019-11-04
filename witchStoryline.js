@@ -35,7 +35,7 @@ function approachTheGingerbreadHouse(){
     console.log(breadCrumbs)
     text.innerHTML += '<p> <br> Du börjar se slutet av stigen och skymtar en stor äng. På denna stora äng står det en stor stuga gjord av....pepparkaka? <br>' + 
     ' <br> Du smyger långsamt fram till skogskanten. Kan det vara sant? Ett hus gjort av pepparkaka? <br> WOW, det kan vara bland det coolaste du sett ' + 
-    'i hela ditt liv. Du blir himla nyfiken på vem som bor i ett sådant hus, men vågar du gå närmare? Vad gör du: <br> - Knackar på <br> - Smyger närmare <br> - Går därifrån? </p>'
+    'i hela ditt liv. Du blir himla nyfiken på vem som bor i ett sådant hus, men vågar du gå närmare? Vad gör du: <br> - Knackar på <br> - Smyger närmare <br> - Går därifrån </p>'
 
     button.onclick = enterTheGingerbreadHouse
     /**
@@ -84,7 +84,7 @@ function knockOnDoor(){
      * @param {openDoor} openDoor - local random number to use for deciding if witch answers the door or not
      */
     function answerDoor(){
-        const knocks = 'KNACK KNACK KNACK'
+        const knocks = '<br> KNACK KNACK KNACK'
         text.innerHTML += knocks
         
         
@@ -122,7 +122,7 @@ function knockOnDoor(){
         }
 
         else{
-            text.innerHTML += '<p> <br> Bakom dörren hör du fotsteg. <br> Dörren öppnas långsamt och en lång näsa sticker ut genom dörrspringan. Ett öga av ' + 
+            text.innerHTML += '<p> Bakom dörren hör du fotsteg. <br> Dörren öppnas långsamt och en lång näsa sticker ut genom dörrspringan. Ett öga av ' + 
             ' äldre karaktär tittar tillbaka på dig. Dörren fortsätter att öppna sig långsamt till synen av en kort tant med hår som ett grått åskmoln ' + 
             ' fyller din vy. <br> "Nämen lilla vän, vad kul att du hittat hit. Vill du ha fika? Kanske lite pepparkaka och mjölk kanske?" <br> HUR kunde ' +
             'tanten veta att jag var så himla sugen på pepparkakor just nu? Självklart vill du ha fika! Dessutom ser tanten väldigt snäll ut </p>' + 
@@ -148,7 +148,7 @@ function knockOnDoor(){
                         case 'n':
                            
                             text.innerHTML += '<p> Häxan: "VA?! Vill du inte ha mina kakor? Nå jag får väl äta upp dig trots att du knappt kommer mätta" <br> Äta upp dig? Vad är det för dumheter? <br> ' + 
-                            ' Du springer ut från huset men häxan hinner ifatt. </p>'
+                            '<br> Du springer ut från huset men häxan hinner ifatt. </p>'
 
                             if(wolf){
                                 text.innerHTML += '<p> Inte nog med att häxan hinner ikapp. Du springer rakt i en fluffig vägg. Det är vargen. <br> Åh nej, dubbel trubbel...</p>'
