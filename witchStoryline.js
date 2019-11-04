@@ -1,20 +1,4 @@
 
-/**
- * @param {Number} witchHP - declares the amount of HP the witch has
- * @param {Number} witchStrength - declares the strength of the witch
- * @param {Number} wolfHP - declares the healt points of the wolf
- * @param {Number} wolfStrength - declares the wolf's strength
- * @param {Boolean} witchAlive - tells if the witch is alive
- *
- */
-
- let witchHP = 20
- const witchStrength = 1
- let wolfHP = 30
- let wolfStrength = 4
- let witch = true
- let stickThrown = false
- let  pikachuFight = false
 
 /**
  * This function takes the user further down the path to the left and invites to a breadcrumb-function

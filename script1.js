@@ -1,41 +1,5 @@
 
-/* Globala variabler */
 
-/**
- * @param {string} userText - The text that shows the storys progress
- * @param {string} userInput - The text the user writes in the input-field
- * @param {array} basket - Contains the items the user has in their basket.
- * @param {number} healthPoints - The users HP
- * @param {number} strength - Your strength point
- * @param {number} breadCrumbs - Number of excisting breadcrumbs through the game
- * @param {boolean} wolf - Stores if you told the wolf the truth or not
- * @param {Number} breadCrumbsLeft - tells how many crumbs there's left to find and tells the programme where you are in the story/series of head-functions
- * @param {Boolean} mushroom - tells if the user has the mushroom
- * @param {Boolean} pikachu - tells if user has Pikachu or not
- * @param {Boolean} stick - tells if the user has a stick or not
- * @param {String} food - chosen food
- * @param {String} drink - chosen drink
- *
- */
-let text = document.getElementById("userText")
-let input = document.getElementById("userInput")
-const button = document.getElementById("userButton")
-let wrongInput = '<br> Det där är ingen korrekt input. Försök igen!'
-
-let basket = []
-let userName
-let healthPoints = 20
-let userStrength = 1
-let breadCrumbs = 5
-let food
-let drink
-
-let mushroom = false
-let wolf = true
-let wolfAtGrandma = false
-let hunter = false
-
-let stick = false
 
 
 
@@ -296,11 +260,11 @@ function wolfEnding(){
     button.onclick = askFirstQuestion
 
     function askFirstQuestion(){
-        text.innerHTML += input.value + ' <p> Mormor svarar: "Ingen kommentar" <br> Du känner fortfarande på dig att något är lurt. Ställ en fråga till: </p>'
+        text.innerHTML += '"' + input.value + '"' + ' <p> Mormor svarar: "Ingen kommentar" <br> Du känner fortfarande på dig att något är lurt. Ställ en fråga till: </p>'
         button.onclick = askSecondQuestion
 
         function askSecondQuestion(){
-            text.innerHTML += input.value + '<p> Mormor: "OKEJ, okej okej okej. Jag är inte din mormor. Jag är vargen...och jag har ätit upp din mormor. ' + 
+            text.innerHTML += '"' + input.value + '"' +  '<p> Mormor: "OKEJ, okej okej okej. Jag är inte din mormor. Jag är vargen...och jag har ätit upp din mormor. ' + 
                             'Du ser, jag kunde inte stå emot min hunger när du pratade om ' + food + ' och ' + drink + ' och jag ville inte äta upp dig '+ 
                             ' så jag tänkte vara schysst och äta upp din mormor istället.'
             
@@ -345,7 +309,7 @@ function wolfEnding(){
 
                 else{
                     text.innerHTML += '<p> Du vänder dig mot vargen och frågar: <br> "Nu när du ätit upp min mormor...skulle du vilja bli min nya mormor då?" <br> Vargen log brett och sa: "självklart. <br> "... Coolt"' 
-
+                     theEnd()
                 }
             }
 
