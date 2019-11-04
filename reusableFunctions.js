@@ -109,7 +109,7 @@ function getRandomNumber(randomNumber){
 function youDied(){
 
     basket = []
-    text.innerHTML += '<p class="dead"><br> YOU DIEDED!</p> <p> Vill du spela igen? (J/N)</p>'
+    text.innerHTML += '<p class="dead"><br> YOU DIED!</p> <p> Vill du spela igen? (J/N)</p>'
     button.onclick = startOver
 
     /**
@@ -127,7 +127,7 @@ function youDied(){
                 break
 
             default:
-                text.innerHTML = wrongInput
+                text.innerHTML += wrongInput
                 button.onclick = startOver
         }
     }
