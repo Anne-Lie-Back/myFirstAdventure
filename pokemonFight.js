@@ -1,23 +1,13 @@
 /**
  * --- THE PIKACHU PART---
- * @param {Boolean} pikachuFed tells if Pikachu has been fed with food or not
+ * 
  * 
  *  A switch to help determine wich function the user would like to invoke : to capture, to feed or to run away.
  * 
  * --- capturePikachu ---
- * @param {String} randomNumber - helps to store a random number that's used to determine of the user is successful in capturing Pikachu or not.
- * @param {String} storyBeforeStickEvent - a string to lead user on to the stick-function
+ 
  */
 
-let pikachu = false
-let pikachuFed = false
-const storyBeforeStickEventSad = '<p> Med tungt hjärta promenerar du vidare, gråten nära till hands. Aldrig har något så skrämmande hänt dig förut.' + 
-                                    'Men blicken djupt sjunken i marken framför dig så är det svårt att missa den pinne som ligger tvärs över vägen.' + 
-                                    'Vill du plocka upp den? (J/N)</p>';
-
-const storyBeforeStickEventHappy = ' Vilken härlig dag! Inte bara solen skiner, utan du har också lyckats skaffa dig en gullig kompis. Nynnandes på en' + 
-                                    'trevlig truddelutt och blicken höjd i en nöjd manér så missar du totalt pinnen som ligger utbredd över stigen. ' + 
-                                    '<br> SCHMACK! (-1 HP) Det där gjorde ont tänkte du, vänder dig bakåt och ser pinnen som orsakade olyckan. Vill du plocka upp den? (J/N) </p>'
 
 function pikachuEvent(){
 
