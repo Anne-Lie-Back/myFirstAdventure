@@ -203,7 +203,7 @@ function event6(){
             break
 
         case 'n':
-            text.innerHTML += '<p> Du gillar inte pinnar, dessutom kan de vara farliga. Man kan ju faktiskt snubbla på den. </p>'
+            text.innerHTML += '<p> Du gillar inte pinnar, dessutom kan de vara farliga. Man kan ju faktiskt snubbla på dem. </p>'
 
             break
 

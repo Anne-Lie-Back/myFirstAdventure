@@ -52,7 +52,7 @@ const storyBeforeStickEventHappy = ' <p><br> Vilken härlig dag! Inte bara solen
                                     'trevlig truddelutt och blicken höjd i en nöjd manér så missar du totalt pinnen som ligger utbredd över stigen. ' + 
                                     '<br> SCHMACK! (-1 HP) Det där gjorde ont tänkte du, vänder dig bakåt och ser pinnen som orsakade olyckan. Vill du plocka upp den? (J/N) </p>'
 const storyBeforeStickEventSad = '<p> <br> Med tungt hjärta promenerar du vidare, gråten nära till hands. Aldrig har något så skrämmande hänt dig förut.' + 
-                                    'Men blicken djupt sjunken i marken framför dig så är det svårt att missa den pinne som ligger tvärs över vägen.' + 
+                                    ' Med blicken djupt sjunken i marken framför dig så är det svårt att missa den pinne som ligger tvärs över stigen.' + 
                                     ' Vill du plocka upp den? (J/N)</p>';
 
 let userName
