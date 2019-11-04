@@ -212,7 +212,7 @@ function event6(){
             button.onclick= event6
     }
 
-    text.innerHTML += '<br> Ditt äventyr fortsätter. På stigen ser du en brödsmula.'
+    text.innerHTML += '<p> Ditt äventyr fortsätter. På stigen ser du en brödsmula. </p>'
     seeBreadCrumb(event7)
 }
 

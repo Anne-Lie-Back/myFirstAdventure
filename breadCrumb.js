@@ -22,9 +22,9 @@ function seeBreadCrumb(nextEvent){
 
             case 'j':
             breadCrumbs = breadCrumbs - 1
-            text.innerHTML += '<br> Du böjer dig ner och lockar upp brödsmulan i din hand. Du undersöker den noggrant, dammar av de fåtal ' +
+            text.innerHTML += '<p> Du böjer dig ner och lockar upp brödsmulan i din hand. Du undersöker den noggrant, dammar av de fåtal ' +
                             'gruskorn som satt på smulan, och slänger sedan in den i din mun. Medan du ändå är där nere så funderar du på om du ' + 
-                            'ska göra en armhävning. <br> Gör du en armhävning? J/N' 
+                            'ska göra en armhävning. <br> Gör du en armhävning? J/N </p>' 
             button.onclick = doPushUp
             break
 
@@ -37,12 +37,12 @@ function seeBreadCrumb(nextEvent){
 
                     case 'j':
                         userStrength = userStrength + 1
-                        text.innerHTML += '<br> Du gör en armhävning och känner dig som en riktig spännis.'
+                        text.innerHTML += '<p> Du gör en armhävning och känner dig som en riktig spännis.</p>'
                         nextEvent()
                         break
                             
                     case 'n':
-                        text.innerHTML += '<br> Äsh, trams. Vem i sitt sinnes fulla bruk gör en armhävning mitt ute i skogen?'
+                        text.innerHTML += '<p> Äsh, trams. Vem i sitt sinnes fulla bruk gör en armhävning mitt ute i skogen? </p>'
                         nextEvent()
                         break
                     
@@ -55,7 +55,7 @@ function seeBreadCrumb(nextEvent){
             }
 
         case 'n':
-            text.innerHTML += '<br> Brödsmulan ser inte tillräckligt aptitlig ut. Du promenerar vidare.'
+            text.innerHTML += '<p> Brödsmulan ser inte tillräckligt aptitlig ut. Du promenerar vidare.</p>'
             nextEvent()
             break
             
