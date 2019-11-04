@@ -1,7 +1,7 @@
 /** 
  * @param {String} text - The text shown for the user in DOM
- * @param {String} userInput - The text the user writes in the input-field
- * @param {String} userText - The text that shows the storys progress
+ * @param {String} input - The text the user writes in the input-field
+ * @param {String} text - The text that shows the storys progress
  */
 
 let text = document.getElementById("userText")

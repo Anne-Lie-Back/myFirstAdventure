@@ -8,21 +8,25 @@
  * @param {String} food - chosen food
  * @param {Number} healthPoints - The user's HP
  * @param {Boolean} hunter - if true the hunter will come to grandma's house
- * @param {String} input - The user's input
- * @param {Boolean} itemWasFound - tells if item can be found in the basket
  * @param {Number} itemIndex - Where to start de search 
+ * @param {Boolean} itemWasFound - tells if item can be found in the basket
  * @param {Boolean} mushroom - tells if the user has the mushroom. If true user has mushroom
  * @param {Boolean} pikachu - tells if user has Pikachu or not. if true user has pikachu
- * @param {Boolean} pikachuFed tells if Pikachu has been fed with food or not
+ * @param {Boolean} pikachuFed - tells if Pikachu has been fed with food or not. If fed it's true
+ * @param {Boolean} pikachuFight - tells if pikachu has been released to fight. If released it's true
  * @param {String} randomNumber - helps to store a random number that's used to determine of the user is successful in capturing Pikachu or not.
  * @param {Boolean} stick - tells if the user has a stick or not. If true user has stick
+ * @param {Boolean} stickThrown - tells if the stick has been thrown. If thrown it's true
  * @param {String} storyBeforeStickEventSad - a string to lead user on to the stick-function
  * @param {String} storyBeforeStickEventSad - a string to lead user on to the stick-function
- * @param {Number} strength - Your strength point
+ * @param {String} userName - Tells the name of the user's character
+ * @param {Number} userStrength - Your strength point
+ * @param {boolean} witch - if witch is true the witch is still alive
  * @param {Number} witchHP - declares the amount of HP the witch has
  * @param {Number} witchStrength - declares the strength of the witch
  * @param {Boolean} witchAlive - tells if the witch is alive
  * @param {Boolean} wolf - Stores if you told the wolf the truth or not. If true, you lied to the wolf and he will be present att the gingerbread house
+ * @param {Boolean} wolfAtGrandma - if true, you told the wolf the truth and he will be at grandma's cottage
  * @param {Number} wolfHP - declares the healt points of the wolf
  * @param {Number} wolfStrength - declares the wolf's strength
  * @param {String} wrongInput - a string to display if input is wrong
