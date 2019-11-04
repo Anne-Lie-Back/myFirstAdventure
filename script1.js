@@ -315,6 +315,8 @@ function wolfEnding(){
                                 text.innerHTML += '<p> Du kikar upp på vargen som fingrar med sina klor på sin kaffekopp och frågar: ' + 
                                                 '<br> "Du skulle inte vilja ha lite svamp?" <br> "Nej tack, jag gillar inte svampar." svarade vargen.' + 
                                                 '<br> "OK" </p>'
+
+                                                theEnd()
                                 break
 
                                 case 'n':
@@ -322,6 +324,8 @@ function wolfEnding(){
                                                         ' inte ens en varg som äter mormorsar förtjänar svampdöden. Du vänder dig mot vargen och frågar: <br> ' + 
                                                         '"Nu när du ätit upp min mormor...kan du bli min nya mormor?" <br> Vargen log brett och sa: "självklart ' +
                                                         userName + '.'
+                                                        
+                                                        theEnd()
                                 break
 
                                 default:
@@ -338,10 +342,51 @@ function wolfEnding(){
 }
 
 function wolfHunterEnding(){
+    text.innerHTML += '<p> Vargen tittade skyldigt ner på sin mage och sa: <br> "Det värsta är att hon inte ens smakade g-" <br> "PEW!" <br>' +
+                    ' Plötsligt sätter sig en pil med röd fjäder i vargens hals. Han segnar ihop på golvet i en hög. Mannen du träffade på stigen ' + 
+                    ' ganska nyss kliver fram. <br> Jägaren: "Förlåt för det där, men han har problem den där vargen. Han har för vana att äta upp ' + 
+                    ' människor lite till höger och vänster. Egentligen brukar han äta medicin mot det begäret men du ser, han rymde från vargreservatet för ' + 
+                    ' en vecka sedan och jag har jagat honom sen dess. Vet du om han hunnit äta upp någon än?" (J/N)</p>'
+
+                    button.onclick = eatenOrNot
+
+                    function eatenOrNot(){
+                        switch (input.value.toLowerCase()){
+                            case 'j':
+                                text.innerHTML += '<p> "Ja, han åt min mormor för bara en stund sen" <br> Medan jägaren lyfter upp den sovande vargen på sina axlar säger han: ' + 
+                                                    ' "Jaså, det gjorde han. Då tar vi honom ' + 
+                                                    'till operationsbordet, så får du tillbaka henne om en vecka. Du kan hämta henne vid närmaste postombud. ' +
+                                                    'vilket innebär att vi skickar henne med PostNord, vilket i sin tur innebär att hon kanske inte kommer fram ' +
+                                                    'men vi skickar ett sms om hon gör det! På återseende". Sedan försvann jägaren runt skogsbrynet. <br> Du tittar länge efter honom och säger sedan: <br> "Men jag har ingen mobil..."</p>'
+                                                    theEnd() 
+                                break
+
+                            case 'n':
+                                text.innerHTML += '<p> Du tar tillfället i akt och säger "Nej", ty du har egentligen aldrig tyckt om din mormor.</p>'
+                                theEnd()
+                                break
+
+                            default:
+                                text.innerHTML += wrongInput
+                                button.onclick = eatenOrNot
+                        }
+                    }
 
 }
 
 function grandmaEnding(){
+
+    text.innerHTML+= '<p> Mormor öppnar dörren.</p>'
+
+    if(mushroom){
+        text.innerHTML += '<p> "Hej mormor. Vill du ha svamp?" </p>'
+        theEnd()
+    }
+
+    else{
+        text.innerHTML += '"Hej mormor. Vad trevligt att du lever!'
+        theEnd()
+    }
 
 }
 

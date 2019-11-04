@@ -54,3 +54,10 @@ body{
     font-size: 2rem;
     text-align:center;
 }
+
+.theEnd{
+    color:black;
+    font-weight: bolder;
+    font-size: 5rem;
+    text-align:center;
+}
