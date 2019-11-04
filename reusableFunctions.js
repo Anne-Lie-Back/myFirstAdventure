@@ -32,7 +32,6 @@
 
 let basket = []
 let breadCrumbs = 5
-
 let drink
 let food
 let healthPoints = 20
@@ -134,4 +133,30 @@ function youDied(){
  */
 function theEnd(){
     text.innerHTML += '<p class="theEnd"><br> <br> THE END </p>'
+    showNews()
+}
+
+/**
+ * Shows what happens if you eat to many breadcrumbs
+ */
+function showNews(){
+
+    text.innerHTML += '<p> EPILOG: <br> Morgonen efter denna märkliga dag kan du knappt fatta vad som hänt. Svampar, vargar och gud vet vad. När du går ner för ' + 
+                        'trappan möts du av din mamma som tittar på dig med uppjagad blick <br> Mamma: "VET du VAD som har hänt? '
+    if (breadCrumbs == 5 || witch){
+        text.innerHTML += 'Våra grannar, Hans och Greta, sprang på ett jättestort pepparkakshus i skogen. Där var det en häxa som ville äta upp dem, ' + 
+                            ' men VET du vad Hans och Greta gjorde? DE PUTTADE IN HÄXAN I UGNEN"'
+        
+    }
+    else if(breadCrumbs >=3){
+        text.innerHTML += 'Våra grannar, Hans och Greta, gick vilse igår. Ingen har hittat dem än. Man tror att de fortfarande irrar runt i skogen någonstans"'
+    }
+    else if(breadCrumbs <=2){
+        text.innerHTML += 'Våra grannar, Hans och Greta, hittades döda i skogen igår. De hade gått vilse och inte hittat hem."'
+    }
+
+    else if(!witch && breadCrumbs == 5){
+        text.innerHTML += 'Våra grannar, Hans och Greta, gick vilse igår. Men dom hittades vid ett JÄTTESTORT pepparkakshus. Tydligen låg tanten som bode i huset död i sin trädgård...' + 
+        '<br>...stackars tant. Så sorgligt"'
+    }
 }

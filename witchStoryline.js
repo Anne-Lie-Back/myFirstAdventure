@@ -84,16 +84,15 @@ function knockOnDoor(){
      * @param {openDoor} openDoor - local random number to use for deciding if witch answers the door or not
      */
     function answerDoor(){
- 
-        let knocksAgain = knocksAgain + ' KNACK'
-        const knocks = 'KNACK KNACK KNACK' 
-        text.innerHTML += knocks + knocksAgain
+        const knocks = 'KNACK KNACK KNACK'
+        text.innerHTML += knocks
+        
+        
         
         let openDoor = getRandomNumber()
         console.log(openDoor)
 
         if (openDoor <= 2){
-            knocks = knocks + ' KNACK'
             text.innerHTML += '<p> Ingen svarade. Försöka igen? (J/N) </p>'
             
             button.onclick = answerOrSneak

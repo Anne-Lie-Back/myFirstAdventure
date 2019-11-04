@@ -32,7 +32,7 @@ function initialInput(){
  * Sets what kind of food the user would like to bring
  */
  function event1(){
-     food = input.value
+     food = input.value.toLowerCase()
      basket.push(input.value)
 
      text.innerHTML += '<p> "Okej, jaja. Jag packar väl ner ' + food + '. Vad tror du hon vill ha att dricka? </p>'
@@ -46,7 +46,7 @@ function initialInput(){
  * The user finds its first breadcrumb
  */
 function event2(){
-    drink = input.value
+    drink = input.value.toLowerCase()
     basket.push(input.value)
 
     text.innerHTML += '<p>"Tror du verkligen att hon dricker ' + drink + '? Jaja, hon dricker säkert det mesta. <br>' +
