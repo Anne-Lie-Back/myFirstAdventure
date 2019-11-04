@@ -66,5 +66,6 @@ function youDied(){
 }
 
 function theEnd(){
-    text.InnerHTML += '<p class="theEnd"> THE END </p>'
+    text.innerHTML += '<p class="theEnd"><br> <br> THE END </p>'
+    console.log('SLUT')
 }

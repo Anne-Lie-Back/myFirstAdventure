@@ -273,9 +273,16 @@ function goToGrandma(){
         talkToHunter()
     }
 
+    else{
+        atGrandma()
+    }
+}
+
+function atGrandma(){
     text.innerHTML += 'Fem minuter är du framme hos mormor. Du knackar på med bestämda slag'
 
     if((wolfAtGrandma && !hunter)||(wolfAtGrandma && hunter)){
+        console.log('Jägarn kommer')
         wolfEnding()
     }
 
@@ -322,7 +329,7 @@ function wolfEnding(){
                                 case 'n':
                                     text.innerHTML += '<p> Aldrig i din vildaste fantasi skulle du ens komma på tanken att ge honom en svamp som du visste var giftig,' +
                                                         ' inte ens en varg som äter mormorsar förtjänar svampdöden. Du vänder dig mot vargen och frågar: <br> ' + 
-                                                        '"Nu när du ätit upp min mormor...kan du bli min nya mormor?" <br> Vargen log brett och sa: "självklart ' +
+                                                        '"Nu när du ätit upp min mormor...kan du bli min nya mormor?" <br> Vargen log brett och sa: "självklart. <br> "... Coolt"' +
                                                         userName + '.'
                                                         
                                                         theEnd()
@@ -334,6 +341,11 @@ function wolfEnding(){
                             }
                         }
                     
+                }
+
+                else{
+                    text.innerHTML += '<p> Du vänder dig mot vargen och frågar: <br> "Nu när du ätit upp min mormor...skulle du vilja bli min nya mormor då?" <br> Vargen log brett och sa: "självklart. <br> "... Coolt"' 
+
                 }
             }
 
@@ -357,12 +369,12 @@ function wolfHunterEnding(){
                                                     ' "Jaså, det gjorde han. Då tar vi honom ' + 
                                                     'till operationsbordet, så får du tillbaka henne om en vecka. Du kan hämta henne vid närmaste postombud. ' +
                                                     'vilket innebär att vi skickar henne med PostNord, vilket i sin tur innebär att hon kanske inte kommer fram ' +
-                                                    'men vi skickar ett sms om hon gör det! På återseende". Sedan försvann jägaren runt skogsbrynet. <br> Du tittar länge efter honom och säger sedan: <br> "Men jag har ingen mobil..."</p>'
+                                                    'men vi skickar ett sms om hon gör det! På återseende". Sedan försvann jägaren runt skogsbrynet. <br> Du tittar länge efter honom, och säger sedan: <br> "Men jag har ingen mobil..."</p>'
                                                     theEnd() 
                                 break
 
                             case 'n':
-                                text.innerHTML += '<p> Du tar tillfället i akt och säger "Nej", ty du har egentligen aldrig tyckt om din mormor.</p>'
+                                text.innerHTML += '<p> Du tar tillfället i akt och säger "Nej", ty du har egentligen aldrig tyckt om din mormor...</p>'
                                 theEnd()
                                 break
 
@@ -405,12 +417,14 @@ function talkToHunter(){
                                 case 'sanning':
                                    hunter = true
                                     text.innerHTML += '<p>"Ja, jag mötte en varg förut. Jag berättade för honom att min mormor bor på denna '+ 
-                                                        'stigen lite längre fram"'
+                                                        'stigen lite längre fram" <br> Jägaren: "Jag förstår, tack för informationen. Trevlig vandring!" </p>'
+                                    atGrandma()
                                     break
                                 
                                 case 'lögn':
                                     text.innerHTML += '<p>"Näe, jag kan inte minnas att jag sett någon varg. Särskilt inte någon fluffig sådan som ' +
-                                                     'undrar var mormoar bor.</p>'
+                                                     'undrar var mormoar bor. <br> Jägaren: "Jag förstår, tack för informationen. Trevlig vandring!" </p>'
+                                    atGrandma()
                                     break
                                 
                                 default:
@@ -419,5 +433,5 @@ function talkToHunter(){
                             }
                         }
 
-                        text.innerHTML += '<p> Jägaren: "Jag förstår, tack för informationen. Trevlig vandring!" </p>'
+                        
 }
