@@ -63,22 +63,13 @@ let wolfHP = 30
 let wolfStrength = 4
 let wrongInput = '<br> Det där är ingen korrekt input. Försök igen!'
 
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * --- BELOW YOU CAN FIND REUSED FUNCTIONS
+ */
 
 /**
- * This function helps managing the inventory and (if needed) splices of the used item
+ * This function helps managing the inventory and (if needed) splices of the used item out of the basket-array
  * 
-
  */
 function useBasketItem(input){
 
@@ -99,20 +90,19 @@ function useBasketItem(input){
     return itemWasFound
 }
 
+/**
+ * Randomizes a random number for the random events
+ */
 function getRandomNumber(randomNumber){
     return randomNumber = Math.round( Math.random() * 4 )
     
 }
 
-/**
- * Function that tells us the user is dead because 0HP
- */
 
 /**
  * ----- DEAD ----
- * Function played when user dies
+ * Function played when user dies. Empties basket and gives you the option to play again
  */
-
 function youDied(){
 
     basket = []
@@ -120,7 +110,7 @@ function youDied(){
     button.onclick = startOver
 
     /**
-     * Function for choosing if you want to play again or not.
+     * Function for choosing if you want to play again or not. Empties text-field
      */
     function startOver(){
         switch (input.value) {
@@ -139,7 +129,9 @@ function youDied(){
     }
 }
 
+/**
+ * When the user manage to come to the end of the story without dying. There's multipal endings.
+ */
 function theEnd(){
     text.innerHTML += '<p class="theEnd"><br> <br> THE END </p>'
-    console.log('SLUT')
 }

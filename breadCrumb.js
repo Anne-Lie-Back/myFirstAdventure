@@ -5,7 +5,7 @@
  */
 
 /**
- * Asks the user if user would like to pick up breadcrumb
+ * Asks the user if user would like to pick up breadcrumb.
  */
 function seeBreadCrumb(nextEvent){
 
@@ -14,47 +14,46 @@ function seeBreadCrumb(nextEvent){
     button.onclick = pickBreadCrumb
 
     /**
-     * 
+     * Handles the user's answe if user would like to pick up breadcrumb and asks if user would like to do a pushup
      */
     function pickBreadCrumb(){ 
         
         switch (input.value.toLowerCase()){
 
             case 'j':
-            case 'J':
             breadCrumbs = breadCrumbs - 1
             text.innerHTML += '<br> Du böjer dig ner och lockar upp brödsmulan i din hand. Du undersöker den noggrant, dammar av de fåtal gruskorn som satt på det, och slänger sedan in smulan i munnen. Medan du ändå är där nere så funderar du på om du ska göra en armhävning. <br> Gör du en armhävning? J/N' 
             button.onclick = doPushUp
             break
 
+            /**
+             * Handles user-input if user wanted to do a pushup and the gain of strength if user chose 'J'
+             */
             function doPushUp(){
                 console.log('Gör en armhävning')
 
-                switch(input.value){
-                case 'j':
-                case 'J':
-                    userStrength = userStrength + 1
-                    text.innerHTML += '<br> Du gör en armhävning och känner dig som en riktig spännis.'
-                    nextEvent()
-                    break
+                switch(input.value.toLowerCase()){
+
+                    case 'j':
+                        userStrength = userStrength + 1
+                        text.innerHTML += '<br> Du gör en armhävning och känner dig som en riktig spännis.'
+                        nextEvent()
+                        break
+                            
+                    case 'n':
+                        text.innerHTML += '<br> Äsh, trams. Vem i sitt sinnes fulla bruk gör en armhävning mitt ute i skogen?'
+                        nextEvent()
+                        break
+                    
                 
-            
-                case 'n':
-                case 'N':
-                    text.innerHTML += '<br> Äsh, trams. Vem i sitt sinnes fulla bruk gör en armhävning mitt ute i skogen?'
-                    nextEvent()
-                    break
-                
-            
-                default:
-                    text.innerHTML += wrongInput
-                    button.onlick = doPushUp
+                    default:
+                        text.innerHTML += wrongInput
+                        button.onlick = doPushUp
                 }
                 
             }
 
         case 'n':
-        case 'N':
             text.innerHTML += '<br> Brödsmulan ser inte tillräckligt aptitlig ut. Du promenerar vidare.'
             nextEvent()
             break
@@ -64,22 +63,4 @@ function seeBreadCrumb(nextEvent){
             button.onclick = pickBreadCrumb
         }      
     }
-
-/*     function eventDirection(){
-     
-        switch (breadCrumbsLeft){
-
-            case 4:
-
-                 return button.onclick = event3
-                
-            case 3:
-
-                return button.onclick = event5
-                
-            default:
-                console.log('Nu blev det fel')
-
-        }
-    } */
 }

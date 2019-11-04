@@ -1,4 +1,7 @@
 
+/**
+ * Tells which "starting phrase" that will be invoked
+ */
 function fightTheWitch(){
 
     if (witch && wolf && !stickThrown){
@@ -41,6 +44,9 @@ function fightTheWitch(){
 
 }
 
+/**
+ * Lets the user choose action and which function that will be invoked
+ */
 function chooseAction(){
     text.innerHTML += '<p> Vad vill du göra? <br> - Slå <br> - Ge upp <br> - Korgen </p>'
     button.onclick = chosenAction
@@ -73,7 +79,7 @@ function chooseAction(){
  */
 
 /**
- * This function gives the option to choose if you would like to hit the wolf or witch (option only available if you lied to the wolf)
+ * Gives the option to choose if you would like to hit the wolf or witch (option only available if you lied to the wolf)
  * if you told the wolf the truth, he's not here and you will automaticly try to hit the witch. If you've thrown the stick (stick is true) the wolf will 
  * not be present. He's out chasing the stick
  */
@@ -116,6 +122,7 @@ function hitWitchOrWolf(){
 
 /**
  * Function for trying to hit the witch and what happens if the witch run out of HP
+ * @param {Number} hitOrMiss - local variable for random number
  */
 
 function hitTheWitch(){
@@ -138,10 +145,12 @@ function hitTheWitch(){
         text.innerHTML += '<p> Du snubblar till och missar häxan totalt. Skit också. </p>'
         wolfAndWitchHitsBack()
     }
-
-
 }
 
+/**
+ * Function for trying to hit the wolf and what happens if the wolf run out of HP
+ * @param {Number} hitOrMiss - local variable for random number
+ */
 function hitTheWolf(){
 
    let hitOrMiss = getRandomNumber()
@@ -149,15 +158,14 @@ function hitTheWolf(){
     if (hitOrMiss >= 2){
         wolfHP = wolfHP - userStrength
         text.innerHTML += '<p>Du träffade! <br> Vargen: "Ouch! Djurmisshandlare! "</p>'
-        console.log(wolfHP)
-        wolfAndWitchHitsBack()
+        console.log(wolfHP) 
 
         if(wolfHP <= 0){
             text.innerHTML += '<p> Vargen: "Jag vill inte dö nu! Jag som alltid drömt om att få leka apport inna jag dör". <br>' + 
-            'Vargen faller ihop död på marken utan sin livsdröm uppfylld </p>'
-            
+            'Vargen faller ihop död på marken utan sin livsdröm uppfylld </p>' 
             wolf = false
         }
+        wolfAndWitchHitsBack()
     }
 
     else{
@@ -167,6 +175,10 @@ function hitTheWolf(){
 
 }
 
+/**
+ * If certain conditions is met, Pikachu will aid you in your fight in different ways. Who Pikachu will hit is randomized
+ * @param {Number} witchOrWolf - local variable for storing random number.
+ */
 function fightingPikachu(){
 
     if (wolf && witch && !stickThrown){
@@ -275,6 +287,7 @@ function wolfAndWitchHitsBack(){
 
 /**
  * Determies if the witch is successful in hitting user
+ * @param {Number} hitOrMiss - local random number
  */
 
 function hitByWitch(){
@@ -298,7 +311,8 @@ function hitByWitch(){
 }
 
 /**
- * Determines if the wolf is successful in hitting user
+ * Determies if the wolf is successful in hitting user
+ * @param {Number} hitOrMiss - local random number
  */
 
 function hitByWolf(){
@@ -324,21 +338,24 @@ function hitByWolf(){
 
 /**
  * This function helps to manage your basket inventory
+ * @param {String} 
  */
 
 function checkBasket(){
     text.innerHTML += '<p> I din korg har du: ' + basket + '. Eller vill du backa?</p>'
 
     button.onclick = chooseBasketItem
-    
+
+    /**
+     * Handles user input. Which item user would like to use and pops the item out of the basket.
+     * @param {String} chosenItem - just a little local string-variable for declutter the if-elses.
+     */
     function chooseBasketItem(){
-        console.log(mushroom)
 
         let chosenItem = input.value.toLowerCase()
         useBasketItem(chosenItem)
 
         if (mushroom && chosenItem == 'svamp'){
-            console.log('svamphelvete', wolf, witch, pikachuFight)
 
                 if(wolf && witch && pikachuFight && !stickThrown){
 
@@ -361,7 +378,6 @@ function checkBasket(){
                 else if(!witch && wolf && !pikachuFight && !stickThrown){
                     text.innerHTML += '<p> Vem ska få svampen? <br> - Vargen <br> - Du </p>'
                 }
-
 
                 else { 
 
@@ -408,6 +424,9 @@ function checkBasket(){
     }
 }
 
+/**
+ * Handles user input. Who should get the mushroom? And what happens when the mushroom is given?
+ */
 function giveMushroom(){
     const giveTo = input.value.toLowerCase()
 
